@@ -8,10 +8,10 @@
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
     </context-param>
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>omega</param-value>
-    </context-param>
+<!--     <context-param> -->
+<!--         <param-name>primefaces.THEME</param-name> -->
+<!--         <param-value>omega</param-value> -->
+<!--     </context-param> -->
     
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -62,8 +62,6 @@
         <web-resource-collection>
             <web-resource-name>secured</web-resource-name>
             <description/>
-            <url-pattern>/security/*</url-pattern>
-            <url-pattern>/accounting/*</url-pattern>
             <url-pattern>/index.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>

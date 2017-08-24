@@ -19,7 +19,9 @@ import javax.persistence.Table;
 @NamedQuery(name = "SecurityUser.findByUserNamePassword", query = "SELECT u FROM SecurityUser u WHERE u.userName = :userName AND u.password = :password")
 public class SecurityUser extends StampedEntity {
 
-    @Column(name = "NAME", unique = true, nullable = false)
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name = "NAME", unique = true, nullable = false)
     private String name;
     @Column(name = "USER_NAME", unique = true, nullable = false)
     private String userName;

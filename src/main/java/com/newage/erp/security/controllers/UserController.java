@@ -1,13 +1,13 @@
 package com.newage.erp.security.controllers;
 
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+
+import org.primefaces.event.TransferEvent;
+
 import com.newage.erp.common.controllers.SuperCRUDController;
 import com.newage.erp.security.entities.SecurityUser;
 import com.newage.erp.security.services.UserService;
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import org.primefaces.event.TransferEvent;
 
 /**
  *
@@ -15,15 +15,7 @@ import org.primefaces.event.TransferEvent;
  */
 @Named
 @ViewScoped
-public class UserController extends SuperCRUDController<SecurityUser> {
-
-    @Inject
-    private UserService userService;
-
-    @PostConstruct
-    private void init() {
-        super.supperCRUDService = userService;
-    }
+public class UserController extends SuperCRUDController<SecurityUser, UserService> {
 
     @Override
     public void create() {

@@ -31,13 +31,13 @@ public class Account extends StampedEntity {
 
 	public Account() {
 	}
+	
+	public Account(Long id) {
+		super(id);
+	}
 
 	public String getName() {
 		return name;
-	}
-
-	public Account(Long id) {
-		super(id);
 	}
 
 	public void setName(String name) {

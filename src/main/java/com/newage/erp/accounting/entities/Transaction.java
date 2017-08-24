@@ -35,12 +35,12 @@ public class Transaction extends StampedEntity {
 	public Transaction() {
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public Transaction(Long id) {
 		super(id);
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void setName(String name) {

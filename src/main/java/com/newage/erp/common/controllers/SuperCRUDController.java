@@ -18,24 +18,27 @@ import static com.newage.erp.common.controllers.utli.Helper.addFacesMessage;
  * @author mohammed
  * @param <T>
  */
-public class SuperCRUDController<T extends SuperEntity> implements Serializable {
+public class SuperCRUDController<E extends SuperEntity, S extends SuperCRUDService<E>> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	protected T item;
-    protected List<T> items;
+	
+	protected E item;
+    protected List<E> items;
 
-    protected SuperCRUDService<T> supperCRUDService;
+    @Inject
+    protected S service;
 
     @Inject
     protected SecurityService ss;
 
     public void prepareList() {
-        items = supperCRUDService.find();
+    	item = null;
+        items = service.find();
     }
 
     public void prepareCreate() {
         try {
-            Constructor<T> constructor = supperCRUDService.getEntityClass().getDeclaredConstructor();
+            Constructor<E> constructor = service.getEntityClass().getDeclaredConstructor();
             item = constructor.newInstance();
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             Logger.getLogger(SuperCRUDController.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,40 +46,42 @@ public class SuperCRUDController<T extends SuperEntity> implements Serializable 
     }
 
     public void prepareUpdate(Long id) {
-        item = supperCRUDService.find(id);
+        item = service.find(id);
     }
 
     public void create() {
-        supperCRUDService.create(item);
+        service.create(item);
         addFacesMessage(FacesMessage.SEVERITY_INFO, "saved");
         prepareCreate();
     }
 
     public String update() {
-        supperCRUDService.update(item);
+        service.update(item);
         addFacesMessage(FacesMessage.SEVERITY_INFO, "updated");
+        item = null;
         return "list?faces-redirect=true";
     }
 
     public String remove() {
-        supperCRUDService.remove(item);
+        service.remove(item);
         addFacesMessage(FacesMessage.SEVERITY_INFO, "removed");
+        item = null;
         return "list?faces-redirect=true";
     }
 
-    public T getItem() {
+    public E getItem() {
         return item;
     }
 
-    public void setItem(T item) {
+    public void setItem(E item) {
         this.item = item;
     }
 
-    public List<T> getItems() {
+    public List<E> getItems() {
         return items;
     }
 
-    public void setItems(List<T> items) {
+    public void setItems(List<E> items) {
         this.items = items;
     }
 }

@@ -23,7 +23,7 @@
 			<ui:include src="sideBar.xhtml" />
 			<div class="content-wrapper">
 				<section class="content container-fluid">
-					<ui:insert id="mainContents" name="mainContent" />
+					<ui:include src="#{paginationController.currentContent}"/>
 				</section>
 			</div>
 			<p:blockUI id="globalBlock" widgetVar="globalBlock" block="body" />

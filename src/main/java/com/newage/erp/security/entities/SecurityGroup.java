@@ -17,44 +17,44 @@ import javax.persistence.Table;
 @Table(name = "SECURITY_GROUP")
 public class SecurityGroup extends StampedEntity {
 
-    @Column(name = "NAME", unique = true, nullable = false)
-    private String name;
-    @ManyToMany(mappedBy = "groups")
-    private List<SecurityUser> users;
-    @ManyToMany
-    @JoinTable(name = "GROUP_PERMISSION",
-            joinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "PERMISSION_ID", referencedColumnName = "ID"))
-    private List<SecurityPermission> permissions;
+	private static final long serialVersionUID = 1L;
 
-    public SecurityGroup() {
-    }
+	@Column(name = "NAME", unique = true, nullable = false)
+	private String name;
+	@ManyToMany(mappedBy = "groups")
+	private List<SecurityUser> users;
+	@ManyToMany
+	@JoinTable(name = "GROUP_PERMISSION", joinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "PERMISSION_ID", referencedColumnName = "ID"))
+	private List<SecurityPermission> permissions;
 
-    public String getName() {
-        return name;
-    }
+	public SecurityGroup() {
+	}
 
-    public SecurityGroup(Long id) {
-        super(id);
-    }
+	public SecurityGroup(Long id) {
+		super(id);
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public List<SecurityUser> getUsers() {
-        return users;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setUsers(List<SecurityUser> users) {
-        this.users = users;
-    }
+	public List<SecurityUser> getUsers() {
+		return users;
+	}
 
-    public List<SecurityPermission> getPermissions() {
-        return permissions;
-    }
+	public void setUsers(List<SecurityUser> users) {
+		this.users = users;
+	}
 
-    public void setPermissions(List<SecurityPermission> permissions) {
-        this.permissions = permissions;
-    }
+	public List<SecurityPermission> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<SecurityPermission> permissions) {
+		this.permissions = permissions;
+	}
 }
