@@ -2,11 +2,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="/WEB-INF/templateCRUD.xhtml">
+	template="/WEB-INF/templateCRUD.xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 	<ui:param name="controller" value="#{accountController}" />
 	<ui:define name="formContent">
 		<p:outputLabel for="name" value="${msg.name}"/>
         <p:inputText id="name" value="#{accountController.item.name}" required="true"/>
+        <p:outputLabel for="code" value="${msg.code}"/>
+        <p:inputText id="code" value="#{accountController.item.code}" required="true"/>
+        <p:outputLabel for="currency" value="currency"/>
+        <p:selectOneMenu id="currency" value="#{accountController.item.currency}" required="true" converter="selectItemsConverter">
+        	<f:selectItems value="#{accountController.currencies}" var="currency" itemLabel="#{currency.name}" itemValue="#{currency}"/>
+        </p:selectOneMenu>
 	</ui:define>
 	<ui:define name="listContent">
 		<p:column headerText="#{msg.name}">

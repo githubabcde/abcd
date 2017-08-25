@@ -1,21 +1,21 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/WEB-INF/templateCRUD.xhtml">
-    <ui:param name="controller" value="#{userController}"/>
-    <ui:define name="formContent">
-        <p:outputLabel for="name" value="${msg.name}"/>
-        <p:inputText id="name" value="#{userController.item.name}" required="true"/>
-        <p:outputLabel for="userName" value="${msg.userName}"/>
-        <p:inputText id="userName" value="#{userController.item.userName}" required="true"/>
-    </ui:define>
-    <ui:define name="listContent">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templateCRUD.xhtml">
+	<ui:param name="controller" value="#{userController}" />
+	<ui:define name="formContent">
+		<p:outputLabel for="name" value="${msg.name}" />
+		<p:inputText id="name" value="#{userController.item.name}" required="true" />
+		<p:outputLabel for="userName" value="${msg.userName}" />
+		<p:inputText id="userName" value="#{userController.item.userName}" required="true" />
+	</ui:define>
+	<ui:define name="listContent">
 		<p:column headerText="#{msg.name}">
-		    <h:outputText value="#{item.name}"/>
+			<h:outputText value="#{item.name}" />
 		</p:column>
 		<p:column headerText="#{msg.userName}">
-		    <h:outputText value="#{item.userName}"/>
+			<h:outputText value="#{item.userName}" />
 		</p:column>
-    </ui:define>
+	</ui:define>
 </ui:composition>

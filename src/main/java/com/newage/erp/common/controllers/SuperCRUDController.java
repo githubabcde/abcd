@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
-import static com.newage.erp.common.controllers.utli.Helper.addFacesMessage;
+import static com.newage.erp.common.utli.Helper.addFacesMessage;
 
 /**
  *

@@ -19,7 +19,7 @@
 		        <p:confirm header="${msg.confirmationMessage}" message="${msg.areYouSure}"/>
 		    </p:commandButton>
 		</h:panelGroup>
-		<p:dataTable value="#{userController.items}" var="item" rendered="#{controller.item eq null}" rows="10" paginator="true" paginatorTemplate="{add} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+		<p:dataTable value="#{controller.items}" var="item" rendered="#{controller.item eq null}" rows="10" paginator="true" paginatorTemplate="{add} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 			<f:facet name="{add}">
 				<p:commandLink actionListener="#{controller.prepareCreate}" update="@form" style="float: right">
 					<i class="fa fas fa-plus"/>

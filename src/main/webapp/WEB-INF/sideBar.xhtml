@@ -28,9 +28,9 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><h:link value="#{msg.currencies}" outcome="/accounting/currency/list"/></li>
+							<li><p:commandLink value="#{msg.currencies}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/currency.xhtml')}" update="mainContents"/></li>
 							<li><p:commandLink value="#{msg.accounts}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/account.xhtml')}" update="mainContents"/></li>
-							<li><h:link value="#{msg.transactions}" outcome="/accounting/transaction/list"/></li>
+							<li><p:commandLink value="#{msg.transactions}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/transaction.xhtml')}" update="mainContents"/></li>
 						</ul>
 					</li>
 				</ul>

@@ -20,9 +20,4 @@ public class PaginationController implements Serializable {
 	public String getCurrentContent() {
 		return currentContent;
 	}
-
-	public void setCurrentContent(String currentContent) {
-		this.currentContent = currentContent;
-	}
-
 }
