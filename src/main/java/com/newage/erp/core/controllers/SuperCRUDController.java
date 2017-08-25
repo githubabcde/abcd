@@ -1,8 +1,11 @@
-package com.newage.erp.common.controllers;
+package com.newage.erp.core.controllers;
 
-import com.newage.erp.common.entities.SuperEntity;
-import com.newage.erp.common.services.SuperCRUDService;
-import com.newage.erp.common.services.SecurityService;
+import com.newage.erp.core.entities.SuperEntity;
+import com.newage.erp.core.services.SecurityService;
+import com.newage.erp.core.services.SuperCRUDService;
+
+import static com.newage.erp.core.utli.Helper.addFacesMessage;
+
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -11,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
-import static com.newage.erp.common.utli.Helper.addFacesMessage;
 
 /**
  *

@@ -1,4 +1,4 @@
-package com.newage.erp.common.converters;
+package com.newage.erp.core.converters;
 
 import java.util.Objects;
 import java.util.Vector;
@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import com.newage.erp.common.entities.SuperEntity;
+import com.newage.erp.core.entities.SuperEntity;
 
 /**
  *

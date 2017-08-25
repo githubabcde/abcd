@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.newage.erp.common.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedEntity;
 
 /**
  *

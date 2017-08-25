@@ -1,4 +1,4 @@
-package com.newage.erp.common.controllers;
+package com.newage.erp.core.controllers;
 
 import java.io.Serializable;
 

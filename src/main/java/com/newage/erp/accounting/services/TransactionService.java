@@ -4,7 +4,7 @@ import javax.annotation.security.DeclareRoles;
 import javax.ejb.Stateless;
 
 import com.newage.erp.accounting.entities.Transaction;
-import com.newage.erp.common.services.SuperCRUDService;
+import com.newage.erp.core.services.SuperCRUDService;
 
 /**
  *

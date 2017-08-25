@@ -10,7 +10,7 @@ import com.newage.erp.accounting.entities.Account;
 import com.newage.erp.accounting.entities.Currency;
 import com.newage.erp.accounting.services.AccountService;
 import com.newage.erp.accounting.services.CurrencyService;
-import com.newage.erp.common.controllers.SuperCRUDController;
+import com.newage.erp.core.controllers.SuperCRUDController;
 
 /**
  *

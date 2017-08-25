@@ -1,4 +1,4 @@
-package com.newage.erp.common.services;
+package com.newage.erp.core.services;
 
 import java.util.Objects;
 import javax.ejb.Stateless;

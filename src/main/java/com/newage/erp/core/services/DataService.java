@@ -1,6 +1,5 @@
-package com.newage.erp.common.services;
+package com.newage.erp.core.services;
 
-import com.newage.erp.common.entities.SuperEntity;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.Stateless;
@@ -10,6 +9,8 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import com.newage.erp.core.entities.SuperEntity;
 
 /**
  *

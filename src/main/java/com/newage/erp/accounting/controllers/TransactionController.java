@@ -5,7 +5,7 @@ import javax.inject.Named;
 
 import com.newage.erp.accounting.entities.Transaction;
 import com.newage.erp.accounting.services.TransactionService;
-import com.newage.erp.common.controllers.SuperCRUDController;
+import com.newage.erp.core.controllers.SuperCRUDController;
 
 /**
  *

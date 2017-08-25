@@ -1,4 +1,4 @@
-package com.newage.erp.common.utli;
+package com.newage.erp.core.utli;
 
 import java.io.IOException;
 import java.util.logging.Level;

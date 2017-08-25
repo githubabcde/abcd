@@ -1,4 +1,4 @@
-package com.newage.erp.common.entities;
+package com.newage.erp.core.entities;
 
 import com.newage.erp.security.entities.SecurityUser;
 import java.util.Date;

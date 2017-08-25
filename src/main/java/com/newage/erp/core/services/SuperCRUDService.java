@@ -1,9 +1,10 @@
-package com.newage.erp.common.services;
+package com.newage.erp.core.services;
 
-import com.newage.erp.common.entities.SuperEntity;
 import java.util.List;
 import javax.ejb.EJBAccessException;
 import javax.inject.Inject;
+
+import com.newage.erp.core.entities.SuperEntity;
 
 /**
  *

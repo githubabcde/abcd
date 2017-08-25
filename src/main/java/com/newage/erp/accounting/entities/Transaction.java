@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.newage.erp.common.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedEntity;
 
 /**
  *

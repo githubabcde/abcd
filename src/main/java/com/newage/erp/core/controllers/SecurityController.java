@@ -1,4 +1,4 @@
-package com.newage.erp.common.controllers;
+package com.newage.erp.core.controllers;
 
 import static javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
 

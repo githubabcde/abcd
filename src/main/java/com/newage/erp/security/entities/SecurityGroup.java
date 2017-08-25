@@ -1,6 +1,5 @@
 package com.newage.erp.security.entities;
 
-import com.newage.erp.common.entities.StampedEntity;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.newage.erp.core.entities.StampedEntity;
 
 /**
  *

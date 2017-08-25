@@ -1,9 +1,10 @@
 package com.newage.erp.security.entities;
 
-import com.newage.erp.common.entities.StampedEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.newage.erp.core.entities.StampedEntity;
 
 /**
  *

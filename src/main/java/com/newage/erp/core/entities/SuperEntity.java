@@ -1,4 +1,4 @@
-package com.newage.erp.common.entities;
+package com.newage.erp.core.entities;
 
 import java.io.Serializable;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.newage.erp.security.services;
 
-import com.newage.erp.common.services.SuperCRUDService;
+import com.newage.erp.core.services.SuperCRUDService;
 import com.newage.erp.security.entities.SecurityUser;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.Stateless;

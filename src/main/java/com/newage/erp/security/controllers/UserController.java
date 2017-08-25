@@ -5,7 +5,7 @@ import javax.inject.Named;
 
 import org.primefaces.event.TransferEvent;
 
-import com.newage.erp.common.controllers.SuperCRUDController;
+import com.newage.erp.core.controllers.SuperCRUDController;
 import com.newage.erp.security.entities.SecurityUser;
 import com.newage.erp.security.services.UserService;
 
