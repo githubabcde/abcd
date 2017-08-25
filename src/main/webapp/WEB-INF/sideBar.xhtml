@@ -15,8 +15,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><p:commandLink value="#{msg.users}" actionListener="#{paginationController.goTo('/WEB-INF/security/user.xhtml')}" update="mainContents"/></li>
-							<li><p:commandLink value="#{msg.groups}" actionListener="#{paginationController.goTo('/WEB-INF/security/group.xhtml')}" update="mainContents"/></li>
+							<li><p:commandLink value="#{msg.users}" actionListener="#{paginationController.goTo('/WEB-INF/security/user.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
+							<li><p:commandLink value="#{msg.groups}" actionListener="#{paginationController.goTo('/WEB-INF/security/group.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -28,9 +28,9 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><p:commandLink value="#{msg.currencies}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/currency.xhtml')}" update="mainContents"/></li>
-							<li><p:commandLink value="#{msg.accounts}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/account.xhtml')}" update="mainContents"/></li>
-							<li><p:commandLink value="#{msg.transactions}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/transaction.xhtml')}" update="mainContents"/></li>
+							<li><p:commandLink value="#{msg.currencies}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/currency.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
+							<li><p:commandLink value="#{msg.accounts}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/account.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
+							<li><p:commandLink value="#{msg.transactions}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/transaction.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
 						</ul>
 					</li>
 				</ul>
