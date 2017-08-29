@@ -1,9 +1,5 @@
 package com.newage.erp.core.controllers;
 
-import com.newage.erp.core.entities.SuperEntity;
-import com.newage.erp.core.services.SecurityService;
-import com.newage.erp.core.services.SuperCRUDService;
-
 import static com.newage.erp.core.utli.Helper.addFacesMessage;
 
 import java.io.Serializable;
@@ -12,15 +8,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
+
+import com.newage.erp.core.entities.StampedNamedEntity;
+import com.newage.erp.core.services.SecurityService;
+import com.newage.erp.core.services.SuperCRUDService;
 
 /**
  *
  * @author mohammed
  * @param <T>
  */
-public class SuperCRUDController<E extends SuperEntity, S extends SuperCRUDService<E>> implements Serializable {
+public class SuperCRUDController<E extends StampedNamedEntity, S extends SuperCRUDService<E>> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

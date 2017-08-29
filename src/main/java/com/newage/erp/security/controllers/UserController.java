@@ -16,6 +16,8 @@ import com.newage.erp.security.services.UserService;
 @Named
 @ViewScoped
 public class UserController extends SuperCRUDController<SecurityUser, UserService> {
+	
+	private static final long serialVersionUID = 1L;
 
     @Override
     public void create() {

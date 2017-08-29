@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.newage.erp.core.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedNamedEntity;
 
 /**
  *
@@ -14,12 +14,10 @@ import com.newage.erp.core.entities.StampedEntity;
  */
 @Entity
 @Table(name = "ACCOUNT")
-public class Account extends StampedEntity {
+public class Account extends StampedNamedEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "NAME", unique = true, nullable = false)
-	private String name;
 	@Column(name = "CODE", unique = true, nullable = false)
 	private String code;
 	@ManyToOne
@@ -34,14 +32,6 @@ public class Account extends StampedEntity {
 	
 	public Account(Long id) {
 		super(id);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getCode() {

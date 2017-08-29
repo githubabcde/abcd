@@ -14,4 +14,5 @@ import com.newage.erp.core.controllers.SuperCRUDController;
 @Named
 @ViewScoped
 public class CurrencyController extends SuperCRUDController<Currency, CurrencyService> {
+	private static final long serialVersionUID = 1L;
 }

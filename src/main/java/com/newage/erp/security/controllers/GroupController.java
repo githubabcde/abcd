@@ -13,4 +13,5 @@ import javax.faces.view.ViewScoped;
 @Named
 @ViewScoped
 public class GroupController extends SuperCRUDController<SecurityGroup, GroupService> {
+	private static final long serialVersionUID = 1L;
 }

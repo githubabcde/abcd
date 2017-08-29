@@ -20,6 +20,8 @@ import com.newage.erp.core.controllers.SuperCRUDController;
 @ViewScoped
 public class AccountController extends SuperCRUDController<Account, AccountService> {
 	
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private CurrencyService currencyService;
 	

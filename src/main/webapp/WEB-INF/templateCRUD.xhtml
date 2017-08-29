@@ -15,6 +15,8 @@
 		<p:separator/>
 		<h:panelGroup layout="block" rendered="#{controller.item ne null}">
 		    <h:panelGrid columns="2">
+		    	<p:outputLabel for="name" value="${msg.name}" />
+		    	<p:inputText id="name" value="#{controller.item.name}" required="true" />
 		    	<ui:insert name="formContent"/>
 		    </h:panelGrid>
 		    <p:separator/>
@@ -28,8 +30,8 @@
 		</h:panelGroup>
 		<p:dataTable value="#{controller.items}" var="item" rendered="#{controller.item eq null}" rows="10" paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 			<f:event type="preRenderComponent" listener="#{controller['prepareList']}" />
-			<p:column headerText="#">
-	    		<p:commandLink value="#{item.id}" actionListener="#{controller.prepareUpdate(item.id)}" update="@form" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/>
+			<p:column headerText="#{msg.name}" filterBy="#{item.name}" filterMatchMode="contains" sortBy="#{item.name}">
+	    		<p:commandLink value="#{item.name}" actionListener="#{controller.prepareUpdate(item.id)}" update="@form" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/>
 			</p:column>
 			<ui:insert name="listContent" />
 		</p:dataTable>

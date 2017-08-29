@@ -14,4 +14,5 @@ import com.newage.erp.core.controllers.SuperCRUDController;
 @Named
 @ViewScoped
 public class TransactionController extends SuperCRUDController<Transaction,TransactionService> {
+	private static final long serialVersionUID = 1L;
 }

@@ -9,7 +9,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import com.newage.erp.core.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedNamedEntity;
 
 /**
  *
@@ -18,12 +18,10 @@ import com.newage.erp.core.entities.StampedEntity;
 @Entity
 @Table(name = "SECURITY_USER")
 @NamedQuery(name = "SecurityUser.findByUserNamePassword", query = "SELECT u FROM SecurityUser u WHERE u.userName = :userName AND u.password = :password")
-public class SecurityUser extends StampedEntity {
+public class SecurityUser extends StampedNamedEntity {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "NAME", unique = true, nullable = false)
-    private String name;
     @Column(name = "USER_NAME", unique = true, nullable = false)
     private String userName;
     @Column(name = "PASSWORD")
@@ -44,14 +42,6 @@ public class SecurityUser extends StampedEntity {
 
     public SecurityUser(Long id) {
         super(id);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUserName() {

@@ -2,6 +2,8 @@ package com.newage.erp.core.controllers;
 
 import static javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -19,8 +21,10 @@ import javax.validation.constraints.NotNull;
 @CustomFormAuthenticationMechanismDefinition(loginToContinue = @LoginToContinue(loginPage = "/login.xhtml", errorPage = "/login.xhtml"))
 @Named(value = "securityController")
 @RequestScoped
-public class SecurityController {
+public class SecurityController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
     @NotNull
     private String username;
 

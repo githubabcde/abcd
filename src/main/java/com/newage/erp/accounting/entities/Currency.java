@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.newage.erp.core.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedNamedEntity;
 
 /**
  *
@@ -12,12 +12,10 @@ import com.newage.erp.core.entities.StampedEntity;
  */
 @Entity
 @Table(name = "CURRENCY")
-public class Currency extends StampedEntity {
+public class Currency extends StampedNamedEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "NAME", unique = true, nullable = false)
-	private String name;
 	@Column(name = "CODE", unique = true, nullable = false)
 	private String code;
 	@Column(name = "FRACTION", nullable = false)
@@ -28,14 +26,6 @@ public class Currency extends StampedEntity {
 
 	public Currency(Long id) {
 		super(id);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getCode() {

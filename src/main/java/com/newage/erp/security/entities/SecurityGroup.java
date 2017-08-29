@@ -1,14 +1,14 @@
 package com.newage.erp.security.entities;
 
 import java.util.List;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.newage.erp.core.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedNamedEntity;
 
 /**
  *
@@ -16,12 +16,10 @@ import com.newage.erp.core.entities.StampedEntity;
  */
 @Entity
 @Table(name = "SECURITY_GROUP")
-public class SecurityGroup extends StampedEntity {
+public class SecurityGroup extends StampedNamedEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "NAME", unique = true, nullable = false)
-	private String name;
 	@ManyToMany(mappedBy = "groups")
 	private List<SecurityUser> users;
 	@ManyToMany
@@ -33,14 +31,6 @@ public class SecurityGroup extends StampedEntity {
 
 	public SecurityGroup(Long id) {
 		super(id);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public List<SecurityUser> getUsers() {

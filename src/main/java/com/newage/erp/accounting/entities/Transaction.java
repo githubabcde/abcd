@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.newage.erp.core.entities.StampedEntity;
+import com.newage.erp.core.entities.StampedNamedEntity;
 
 /**
  *
@@ -16,12 +16,10 @@ import com.newage.erp.core.entities.StampedEntity;
  */
 @Entity
 @Table(name = "TRANSACTION")
-public class Transaction extends StampedEntity {
+public class Transaction extends StampedNamedEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "NAME", nullable = false)
-	private String name;
 	@Column(name = "TRANSACTION_TIME")
 	private Date TransactionTime;
 	@Column(name = "AMOUNT")
@@ -37,14 +35,6 @@ public class Transaction extends StampedEntity {
 
 	public Transaction(Long id) {
 		super(id);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Date getTransactionTime() {
