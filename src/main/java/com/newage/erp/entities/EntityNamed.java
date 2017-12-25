@@ -12,6 +12,10 @@ public class EntityNamed extends EntityMaster {
     @Column(name = "name", unique = true)
     protected String name;
 
+    public EntityNamed(Long id) {
+        super(id);
+    }
+
     public String getName() {
         return name;
     }

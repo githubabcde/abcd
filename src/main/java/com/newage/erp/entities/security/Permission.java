@@ -10,6 +10,10 @@ import javax.persistence.Table;
 @Table(name = "caller")
 public class Permission extends EntityNamedStamped {
 
+    public Permission(Long id) {
+        super(id);
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

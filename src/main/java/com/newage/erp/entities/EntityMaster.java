@@ -15,6 +15,12 @@ public class EntityMaster implements Serializable{
     @Column(name = "ID")
     protected Long id;
 
+    public EntityMaster() {
+    }
+
+    public EntityMaster(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }

@@ -10,9 +10,13 @@ import javax.persistence.Table;
  */
 @Table(name = "caller")
 public class Caller extends EntityNamedStamped {
-    
-    @Column(name="password")
+
+    @Column(name = "password")
     private String password;
+
+    public Caller(Long id) {
+        super(id);
+    }
 
     public String getPassword() {
         return password;

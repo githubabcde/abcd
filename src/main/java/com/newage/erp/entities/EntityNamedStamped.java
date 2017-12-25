@@ -15,6 +15,10 @@ public class EntityNamedStamped extends EntityNamed {
     @Column(name = "timeStamp")
     protected Date timeStamp;
 
+    public EntityNamedStamped(Long id) {
+        super(id);
+    }
+
     public Caller getCaller() {
         return caller;
     }
