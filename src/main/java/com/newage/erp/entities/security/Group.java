@@ -1,15 +1,14 @@
-package com.newage.erp.entities;
+package com.newage.erp.entities.security;
 
-import javax.persistence.Entity;
+import com.newage.erp.entities.EntityNamedStamped;
 import javax.persistence.Table;
 
 /**
  *
  * @author mohammed
  */
-@Entity
 @Table(name = "caller")
-public class Caller extends EntityNamedStamped {
+public class Group extends EntityNamedStamped {
 
     @Override
     public int hashCode() {
@@ -21,10 +20,10 @@ public class Caller extends EntityNamedStamped {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Caller)) {
+        if (!(object instanceof Group)) {
             return false;
         }
-        Caller other = (Caller) object;
+        Group other = (Group) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

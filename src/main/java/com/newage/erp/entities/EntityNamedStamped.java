@@ -1,5 +1,6 @@
 package com.newage.erp.entities;
 
+import com.newage.erp.entities.security.Caller;
 import java.util.Date;
 import javax.persistence.Column;
 
