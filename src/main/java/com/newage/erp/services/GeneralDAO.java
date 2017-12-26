@@ -1,6 +1,5 @@
 package com.newage.erp.services;
 
-import com.newage.erp.entities.EntityNamedStamped;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,21 +15,21 @@ public interface GeneralDAO {
      * @param e
      * @param caller 
      */
-    public void persist(EntityNamedStamped e, Long caller);
+    public void persist(Object e, Long caller);
 
     /**
      * 
      * @param e
      * @param caller 
      */
-    public void merge(EntityNamedStamped e, Long caller);
+    public void merge(Object e, Long caller);
 
     /**
      * 
      * @param e
      * @param caller 
      */
-    public void remove(EntityNamedStamped e, Long caller);
+    public void remove(Object e, Long caller);
     
     /**
      * 

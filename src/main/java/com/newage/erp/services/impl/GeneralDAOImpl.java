@@ -1,9 +1,6 @@
 package com.newage.erp.services.impl;
 
-import com.newage.erp.entities.EntityNamedStamped;
-import com.newage.erp.entities.security.Caller;
 import com.newage.erp.services.GeneralDAO;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,21 +21,17 @@ public class GeneralDAOImpl implements GeneralDAO {
     private EntityManager em;
 
     @Override
-    public void persist(EntityNamedStamped e, Long caller) {
-        e.setTimeStamp(new Date());
-        e.setCaller(new Caller(caller));
+    public void persist(Object e, Long caller) {
         em.persist(e);
     }
 
     @Override
-    public void merge(EntityNamedStamped e, Long caller) {
-        e.setTimeStamp(new Date());
-        e.setCaller(new Caller(caller));
+    public void merge(Object e, Long caller) {
         em.merge(e);
     }
 
     @Override
-    public void remove(EntityNamedStamped e, Long caller) {
+    public void remove(Object e, Long caller) {
         em.remove(e);
     }
 
