@@ -1,6 +1,9 @@
 package com.newage.erp.services.impl;
 
-import com.newage.erp.services.GeneralDAO;
+import com.newage.erp.common.entities.EntityMasterStamped;
+import com.newage.erp.security.entities.SecurityUser;
+import com.newage.erp.common.services.GeneralDAO;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,17 +24,21 @@ public class GeneralDAOImpl implements GeneralDAO {
     private EntityManager em;
 
     @Override
-    public void persist(Object e, Long caller) {
+    public void persist(EntityMasterStamped e, Long securityUser) {
+        e.setStampTime(new Date());
+        e.setStampUser(new SecurityUser(securityUser));
         em.persist(e);
     }
 
     @Override
-    public void merge(Object e, Long caller) {
+    public void merge(EntityMasterStamped e, Long securityUser) {
+        e.setStampTime(new Date());
+        e.setStampUser(new SecurityUser(securityUser));
         em.merge(e);
     }
 
     @Override
-    public void remove(Object e, Long caller) {
+    public void remove(Object e, Long securityUser) {
         em.remove(e);
     }
 

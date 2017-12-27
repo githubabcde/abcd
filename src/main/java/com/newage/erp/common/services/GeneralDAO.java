@@ -1,5 +1,6 @@
-package com.newage.erp.services;
+package com.newage.erp.common.services;
 
+import com.newage.erp.common.entities.EntityMasterStamped;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -11,50 +12,50 @@ import javax.ejb.Local;
 public interface GeneralDAO {
 
     /**
-     * 
+     *
      * @param e
-     * @param caller 
+     * @param securityUser
      */
-    public void persist(Object e, Long caller);
+    public void persist(EntityMasterStamped e, Long securityUser);
 
     /**
-     * 
+     *
      * @param e
-     * @param caller 
+     * @param securityUser
      */
-    public void merge(Object e, Long caller);
+    public void merge(EntityMasterStamped e, Long securityUser);
 
     /**
-     * 
+     *
      * @param e
-     * @param caller 
+     * @param securityUser
      */
-    public void remove(Object e, Long caller);
-    
+    public void remove(Object e, Long securityUser);
+
     /**
-     * 
+     *
      * @param <T>
      * @param clazz
-     * @return 
+     * @return
      */
     public <T> List<T> find(Class<T> clazz);
 
     /**
-     * 
+     *
      * @param <T>
      * @param clazz
      * @param id
-     * @return 
+     * @return
      */
     public <T> T find(Class<T> clazz, Long id);
-    
+
     /**
-     * 
+     *
      * @param <T>
      * @param namedQuery
      * @param clazz
      * @param params
-     * @return 
+     * @return
      */
     public <T> List<T> find(String namedQuery, Class<T> clazz, Object... params);
 }
