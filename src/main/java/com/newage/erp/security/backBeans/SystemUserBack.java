@@ -4,6 +4,8 @@ import com.newage.erp.security.entities.SecurityUser;
 import com.newage.erp.common.services.GeneralDAO;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Locale;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -27,12 +29,6 @@ public class SystemUserBack implements Serializable {
 
     public List<SecurityUser> getCallers() {
         return generalDAO.find(SecurityUser.class);
-    }
-
-    public void create() {
-        SecurityUser securityUser = new SecurityUser(1l);
-        securityUser.setName("Mohammed");
-        generalDAO.persist(securityUser, 1l);
     }
 
 }
