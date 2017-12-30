@@ -12,65 +12,77 @@
                 height: 100%;
                 width: 300px;
                 position: fixed;
-                z-index: 1;
-                top: 0;
-                left: 0;
-                background-color: #111;
+                #{view.locale.language eq 'ar'? 'right: 0;' : 'left: 0;'}
+                background-color: #ebedf0;
                 overflow-x: hidden;
                 transition: 0.5s;
             }
-
             #main {
-                transition: margin-left .5s;
-                margin-left: 300px;
+                transition: 0.5s;
+                #{view.locale.language eq 'ar'? 'margin-right: 300px;' : 'margin-left: 300px;'}
             }
         </style>
     </h:head>
-    <h:body>
-        <f:view locale="en">
-            <div dir="#{view.locale.language eq 'ar'? 'rtl' : 'ltr' }">
-
-                <div id="mySidenav">
-                    <h:form>
-                        <p:panelMenu>
-                            <p:submenu label="Navigations" >
-                                <p:submenu label="Links" icon="ui-icon-extlink">
-                                    <p:submenu label="PrimeFaces" icon="ui-icon-heart">
-                                        <p:menuitem value="Home" icon="ui-icon-home" />
-                                        <p:menuitem value="Docs" icon="ui-icon-document" />
-                                    </p:submenu>
+    <h:body dir="#{view.locale.language eq 'ar'? 'rtl' : 'ltr' }" style="margin: 0">
+        <f:view locale="ar">
+            <div id="mySidenav">
+                <h:form>
+                    <p:panelMenu>
+                        <p:submenu label="Navigations" >
+                            <p:submenu label="Links">
+                                <p:submenu label="PrimeFaces">
+                                    <p:menuitem value="Home"/>
+                                    <p:menuitem value="Docs"/>
                                 </p:submenu>
                             </p:submenu>
-                        </p:panelMenu>
-                    </h:form>
-                </div>
+                            <p:submenu label="Links">
+                                <p:submenu label="PrimeFaces">
+                                    <p:menuitem value="Home"/>
+                                    <p:menuitem value="Docs"/>
+                                </p:submenu>
+                            </p:submenu>
+                        </p:submenu>
+                        <p:submenu label="Navigations" >
+                            <p:submenu label="Links">
+                                <p:submenu label="PrimeFaces">
+                                    <p:menuitem value="Home"/>
+                                    <p:menuitem value="Docs"/>
+                                </p:submenu>
+                            </p:submenu>
+                            <p:submenu label="Links">
+                                <p:submenu label="PrimeFaces">
+                                    <p:menuitem value="Home"/>
+                                    <p:menuitem value="Docs"/>
+                                </p:submenu>
+                            </p:submenu>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </div>
 
-                <div id="main">
-                    <div id="top" style="height: 32px">      
-                        <a style="font-size:30px;cursor:pointer;float: #{view.locale.language eq 'ar'? 'right' : 'left'}" class="fa fa-th" onclick="openNav()"/>
-                        <div style="font-size: 32px; float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
-                            <i class="fa fa-language" />
-                            <i class="fa fa-paint-brush"/>
-                            <i class="fa fa-user"/>
-                        </div>
+            <div id="main">
+                <div id="top" style="height: 50px;background-color: #007be5;">
+                    <div style="float: #{view.locale.language eq 'ar'? 'right' : 'left'}">
+                        <i style="color: white;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-bars" onclick="openNav()"/>                        
                     </div>
-                    <hr/>
-                    <div id="content">
-                        <p:growl id="growl"/>
-                        <ui:insert name="content"/>
-                    </div>
+                    <h:link outcome="/profile.xhtml" style="font-size: 32px; color: white; float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
+                        <i class="fa fa-user" style="margin: 9px;"/>
+                    </h:link>
                 </div>
-
+                <div id="content" style="margin: 10px;">
+                    <p:growl id="growl"/>
+                    <ui:insert name="content"/>
+                </div>
             </div>
         </f:view>
         <script>
             function openNav() {
                 if (document.getElementById("mySidenav").style.width === "0px") {
                     document.getElementById("mySidenav").style.width = "300px";
-                    document.getElementById("main").style.marginLeft = "300px";
+                    document.getElementById("main").style.#{view.locale.language eq 'ar'?'marginRight':'marginLeft'} = "300px";
                 } else {
                     document.getElementById("mySidenav").style.width = "0px";
-                    document.getElementById("main").style.marginLeft = "0px";
+                    document.getElementById("main").style.margin = "0px";
                 }
             }
         </script>

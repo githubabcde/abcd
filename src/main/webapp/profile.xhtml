@@ -3,15 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/WEB-INF/template.xhtml">
         <ui:define name="content">
             <h:form>
-                <p:dataTable value="#{systemUserBack.callers}" var="caller">
-                    <p:column headerText="#{msg.name}">
-                        <h:outputText value="#{caller.name}"/>
-                    </p:column>
-                </p:dataTable>
+                
             </h:form>
         </ui:define>
     </ui:composition>
