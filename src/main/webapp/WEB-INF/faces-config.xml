@@ -9,7 +9,7 @@
             <supported-locale>ar</supported-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>com.newage.erp.i18n.msg</base-name>
+            <base-name>msg</base-name>
             <var>msg</var>
         </resource-bundle>
     </application>

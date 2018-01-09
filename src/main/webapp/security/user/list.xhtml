@@ -6,9 +6,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/WEB-INF/listTemplate.xhtml">
         <ui:define name="content">
-            <p:dataTable value="#{systemUserBack.callers}" var="caller">
+            <p:dataTable value="#{systemUserController.items}" var="item">
                 <p:column headerText="#{msg.name}">
-                    <h:outputText value="#{caller.name}"/>
+                    <h:outputText value="#{item.name}"/>
                 </p:column>
             </p:dataTable>
         </ui:define>

@@ -13,7 +13,7 @@ import javax.persistence.MappedSuperclass;
 public class EntityMaster implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     protected Long id;
 
     public EntityMaster() {

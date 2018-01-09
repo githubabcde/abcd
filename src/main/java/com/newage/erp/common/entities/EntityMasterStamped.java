@@ -16,10 +16,10 @@ import javax.persistence.TemporalType;
 @MappedSuperclass
 public class EntityMasterStamped extends EntityMaster {
 
-    @Column(name = "stamp_time", nullable = false)
+    @Column(name = "STAMP_TIME", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     protected Date stampTime;
-    @JoinColumn(name = "stamp_user", nullable = false)
+    @JoinColumn(name = "STAMP_USER", nullable = false)
     @ManyToOne
     protected SecurityUser stampUser;
 

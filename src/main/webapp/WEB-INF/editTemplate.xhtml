@@ -11,8 +11,12 @@
             <h:form>
                 <ui:insert name="content"/>
                 <p:separator/>
-                <p:commandButton value="#{msg.edit}"/>
-                <p:commandButton value="#{msg.delete}"/>
+                <p:commandButton value="#{msg.edit}">
+                    <p:confirm header="${msg.confirmationMessage}" message="${msg.areYouSure}"/>
+                </p:commandButton>
+                <p:commandButton value="#{msg.delete}">
+                    <p:confirm header="${msg.confirmationMessage}" message="${msg.areYouSure}"/>
+                </p:commandButton>
             </h:form>
         </ui:define>
     </ui:composition>

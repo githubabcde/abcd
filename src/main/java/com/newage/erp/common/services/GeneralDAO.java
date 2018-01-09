@@ -1,61 +1,78 @@
 package com.newage.erp.common.services;
 
 import com.newage.erp.common.entities.EntityMasterStamped;
+import com.newage.erp.security.entities.SecurityUser;
+import java.util.Date;
 import java.util.List;
-import javax.ejb.Local;
+import java.util.Objects;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
  * @author mohammed
  */
-@Local
-public interface GeneralDAO {
+@Stateless
+public class GeneralDAO {
 
-    /**
-     *
-     * @param e
-     * @param securityUser
-     */
-    public void persist(EntityMasterStamped e, Long securityUser);
+    @PersistenceContext(unitName = "erpPU")
+    private EntityManager em;
 
-    /**
-     *
-     * @param e
-     * @param securityUser
-     */
-    public void merge(EntityMasterStamped e, Long securityUser);
+    public void persist(EntityMasterStamped e, Long userId) {
+        e.setId(getNewId(e.getClass()));
+        e.setStampTime(new Date());
+        e.setStampUser(new SecurityUser(userId));
+        em.persist(e);
 
-    /**
-     *
-     * @param e
-     * @param securityUser
-     */
-    public void remove(Object e, Long securityUser);
+    }
 
-    /**
-     *
-     * @param <T>
-     * @param clazz
-     * @return
-     */
-    public <T> List<T> find(Class<T> clazz);
+    public void merge(EntityMasterStamped e, Long userId) {
+        e.setStampTime(new Date());
+        e.setStampUser(new SecurityUser(userId));
+        em.merge(e);
+    }
 
-    /**
-     *
-     * @param <T>
-     * @param clazz
-     * @param id
-     * @return
-     */
-    public <T> T find(Class<T> clazz, Long id);
+    public void remove(Object e, Long userId) {
+        em.remove(e);
+    }
 
-    /**
-     *
-     * @param <T>
-     * @param namedQuery
-     * @param clazz
-     * @param params
-     * @return
-     */
-    public <T> List<T> find(String namedQuery, Class<T> clazz, Object... params);
+    public <T> List<T> find(Class<T> clazz) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<T> cq = cb.createQuery(clazz);
+        Root<T> rootEntry = cq.from(clazz);
+        CriteriaQuery<T> all = cq.select(rootEntry);
+        TypedQuery<T> allQuery = em.createQuery(all);
+        return allQuery.getResultList();
+    }
+
+    public <T> T find(Class<T> clazz, Long id) {
+        return em.find(clazz, id);
+    }
+
+    public <T> List<T> find(String namedQuery, Class<T> clazz, Object... params) {
+        try {
+            TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, clazz);
+            for (int i = 0; i < params.length; i += 2) {
+                typedQuery.setParameter(params[i].toString(), params[i + 1]);
+            }
+            return typedQuery.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Long getNewId(Class clazz) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(clazz);
+        Root root = cq.from(clazz);
+        cq.select(cb.max(root.get("id")));
+        TypedQuery q = em.createQuery(cq);
+        Number maxId = ((Number) q.getSingleResult());
+        return Objects.isNull(maxId) ? 1l : maxId.longValue() + 1l;
+    }
 }
