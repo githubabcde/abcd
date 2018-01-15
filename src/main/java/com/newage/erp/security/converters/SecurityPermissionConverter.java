@@ -16,7 +16,7 @@ public class SecurityPermissionConverter implements Converter<SecurityPermission
 
     @Override
     public SecurityPermission getAsObject(FacesContext context, UIComponent component, String value) {
-        return Objects.isNull(value) ? null : new SecurityPermission(Long.parseLong(value));
+        return Objects.isNull(value) ? null : new SecurityPermission(Long.valueOf(value));
     }
 
     @Override

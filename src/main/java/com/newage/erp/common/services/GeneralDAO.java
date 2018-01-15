@@ -1,8 +1,6 @@
 package com.newage.erp.common.services;
 
-import com.newage.erp.common.entities.EntityMasterStamped;
-import com.newage.erp.security.entities.SecurityUser;
-import java.util.Date;
+import com.newage.erp.common.entities.EntityMaster;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.Stateless;
@@ -23,22 +21,18 @@ public class GeneralDAO {
     @PersistenceContext(unitName = "erpPU")
     private EntityManager em;
 
-    public void persist(EntityMasterStamped e, Long userId) {
+    public void persist(EntityMaster e) {
         e.setId(getNewId(e.getClass()));
-        e.setStampTime(new Date());
-        e.setStampUser(new SecurityUser(userId));
         em.persist(e);
 
     }
 
-    public void merge(EntityMasterStamped e, Long userId) {
-        e.setStampTime(new Date());
-        e.setStampUser(new SecurityUser(userId));
+    public void merge(EntityMaster e) {
         em.merge(e);
     }
 
-    public void remove(Object e, Long userId) {
-        em.remove(e);
+    public void remove(Object e) {
+        em.remove(em.merge(e));
     }
 
     public <T> List<T> find(Class<T> clazz) {

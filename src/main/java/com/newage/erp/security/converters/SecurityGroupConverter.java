@@ -16,7 +16,7 @@ public class SecurityGroupConverter implements Converter<SecurityGroup> {
 
     @Override
     public SecurityGroup getAsObject(FacesContext context, UIComponent component, String value) {
-        return Objects.isNull(value) ? null : new SecurityGroup(Long.parseLong(value));
+        return Objects.isNull(value) ? null : new SecurityGroup(Long.valueOf(value));
     }
 
     @Override

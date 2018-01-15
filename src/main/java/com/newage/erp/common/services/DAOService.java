@@ -1,6 +1,6 @@
 package com.newage.erp.common.services;
 
-import com.newage.erp.common.entities.EntityMasterStamped;
+import com.newage.erp.common.entities.EntityMaster;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -9,7 +9,7 @@ import javax.inject.Inject;
  * @author mohammed
  * @param <T>
  */
-public class DAOService<T extends EntityMasterStamped> {
+public class DAOService<T extends EntityMaster> {
 
     @Inject
     protected GeneralDAO generalDAO;
@@ -22,15 +22,15 @@ public class DAOService<T extends EntityMasterStamped> {
         return generalDAO.find(clazz, id);
     }
 
-    public void persist(T entity, Long userId) {
-        generalDAO.persist(entity, userId);
+    public void persist(T entity) {
+        generalDAO.persist(entity);
     }
 
-    public void merge(T entity, Long userId) {
-        generalDAO.merge(entity, userId);
+    public void merge(T entity) {
+        generalDAO.merge(entity);
     }
 
-    public void remove(T entity, Long userId) {
-        generalDAO.remove(entity, userId);
+    public void remove(T entity) {
+        generalDAO.remove(entity);
     }
 }

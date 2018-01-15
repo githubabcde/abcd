@@ -1,4 +1,4 @@
-package com.newage.erp.security.controllers;
+package com.newage.erp.security;
 
 import static java.util.Arrays.asList;
 import java.util.HashSet;
@@ -19,7 +19,6 @@ public class IdentityStoreImpl implements IdentityStore {
 
     @Override
     public CredentialValidationResult validate(Credential credential) {
-        System.out.println("com.newage.erp.security.controllers.IdentityStoreImpl.validate()");
         if (credential instanceof UsernamePasswordCredential) {
             return validate((UsernamePasswordCredential) credential);
         }
@@ -28,7 +27,7 @@ public class IdentityStoreImpl implements IdentityStore {
 
     private CredentialValidationResult validate(UsernamePasswordCredential usernamePasswordCredential) {
         if (usernamePasswordCredential.getCaller().equals("reza") && usernamePasswordCredential.getPassword().compareTo("secret1")) {
-            return new CredentialValidationResult("reza", new HashSet<>(asList("foo", "bar")));
+            return new CredentialValidationResult("reza", new HashSet<>(asList("loger")));
         }
         return INVALID_RESULT;
     }

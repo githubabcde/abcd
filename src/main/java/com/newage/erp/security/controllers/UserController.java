@@ -1,9 +1,11 @@
 package com.newage.erp.security.controllers;
 
+import static com.newage.erp.common.controllers.utli.Helper.message;
 import com.newage.erp.security.entities.SecurityUser;
 import com.newage.erp.security.services.SecurityUserService;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -12,9 +14,9 @@ import javax.inject.Inject;
  *
  * @author mohammed
  */
-@Named(value = "systemUserController")
+@Named(value = "userController")
 @ViewScoped
-public class SystemUserController implements Serializable {
+public class UserController implements Serializable {
 
     private SecurityUser item;
     private List<SecurityUser> items;
@@ -35,15 +37,19 @@ public class SystemUserController implements Serializable {
     }
 
     public void add() {
-        securityUserService.persist(item, 1l);
+        securityUserService.persist(item);
+        message(FacesMessage.SEVERITY_INFO, "saved");
+        prepareAdd();
     }
 
-    public void edit() {
-        securityUserService.merge(item, 1l);
+    public String edit() {
+        securityUserService.merge(item);
+        return "list?faces-redirect=true";
     }
 
-    public void remove() {
-        securityUserService.remove(item, 1l);
+    public String remove() {
+        securityUserService.remove(item);
+        return "list?faces-redirect=true";
     }
 
     public SecurityUser getItem() {
@@ -61,5 +67,4 @@ public class SystemUserController implements Serializable {
     public void setItems(List<SecurityUser> items) {
         this.items = items;
     }
-
 }

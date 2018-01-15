@@ -6,17 +6,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="template.xhtml">
         <ui:define name="mainContent">
-            <p:link outcome="list" style="text-decoration: none" class="fa fa-arrow-up"/>
-            <p:separator/>
             <h:form>
-                <ui:insert name="content"/>
+                <p:link outcome="list" style="text-decoration: none" class="fa fa-arrow-up"/>
                 <p:separator/>
-                <p:commandButton value="#{msg.edit}">
-                    <p:confirm header="${msg.confirmationMessage}" message="${msg.areYouSure}"/>
-                </p:commandButton>
-                <p:commandButton value="#{msg.delete}">
-                    <p:confirm header="${msg.confirmationMessage}" message="${msg.areYouSure}"/>
-                </p:commandButton>
+                <ui:insert name="content"/>
             </h:form>
         </ui:define>
     </ui:composition>

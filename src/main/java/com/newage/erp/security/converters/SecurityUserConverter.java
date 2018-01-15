@@ -16,7 +16,7 @@ public class SecurityUserConverter implements Converter<SecurityUser> {
 
     @Override
     public SecurityUser getAsObject(FacesContext context, UIComponent component, String value) {
-        return Objects.isNull(value) ? null : new SecurityUser(Long.parseLong(value));
+        return Objects.isNull(value) ? null : new SecurityUser(Long.valueOf(value));
     }
 
     @Override
