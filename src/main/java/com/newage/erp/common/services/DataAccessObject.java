@@ -16,7 +16,7 @@ import javax.persistence.criteria.Root;
  * @author mohammed
  */
 @Stateless
-public class GeneralDAO {
+public class DataAccessObject {
 
     @PersistenceContext(unitName = "erpPU")
     private EntityManager em;
@@ -55,6 +55,18 @@ public class GeneralDAO {
                 typedQuery.setParameter(params[i].toString(), params[i + 1]);
             }
             return typedQuery.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public <T> T findOne(String namedQuery, Class<T> clazz, Object... params) {
+        try {
+            TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, clazz);
+            for (int i = 0; i < params.length; i += 2) {
+                typedQuery.setParameter(params[i].toString(), params[i + 1]);
+            }
+            return typedQuery.getSingleResult();
         } catch (Exception e) {
             return null;
         }

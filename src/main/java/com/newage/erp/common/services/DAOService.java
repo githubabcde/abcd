@@ -12,25 +12,25 @@ import javax.inject.Inject;
 public class DAOService<T extends EntityMaster> {
 
     @Inject
-    protected GeneralDAO generalDAO;
+    protected DataAccessObject dao;
 
     public List<T> find(Class<T> clazz) {
-        return generalDAO.find(clazz);
+        return dao.find(clazz);
     }
 
     public T find(Class<T> clazz, Long id) {
-        return generalDAO.find(clazz, id);
+        return dao.find(clazz, id);
     }
 
     public void persist(T entity) {
-        generalDAO.persist(entity);
+        dao.persist(entity);
     }
 
     public void merge(T entity) {
-        generalDAO.merge(entity);
+        dao.merge(entity);
     }
 
     public void remove(T entity) {
-        generalDAO.remove(entity);
+        dao.remove(entity);
     }
 }

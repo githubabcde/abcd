@@ -25,25 +25,25 @@ public class UserController implements Serializable {
     private SecurityUserService securityUserService;
 
     public void prepareList() {
-        items = securityUserService.find(SecurityUser.class);
+        items = securityUserService.find();
     }
 
-    public void prepareAdd() {
+    public void prepareCreate() {
         item = new SecurityUser();
     }
 
-    public void prepareEdit(Long id) {
-        item = securityUserService.find(SecurityUser.class, id);
+    public void prepareUpdate(Long id) {
+        item = securityUserService.find(id);
     }
 
-    public void add() {
-        securityUserService.persist(item);
+    public void create() {
+        securityUserService.create(item);
         message(FacesMessage.SEVERITY_INFO, "saved");
-        prepareAdd();
+        prepareCreate();
     }
 
-    public String edit() {
-        securityUserService.merge(item);
+    public String update() {
+        securityUserService.update(item);
         return "list?faces-redirect=true";
     }
 

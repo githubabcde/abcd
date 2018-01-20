@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -15,10 +16,13 @@ import javax.persistence.Table;
  */
 @Entity(name = "SecurityUser")
 @Table(name = "SECURITY_USER")
+@NamedQuery(name = "SecurityUser.findByUserNamePassword", query = "SELECT u FROM SecurityUser u WHERE u.userName = :userName AND u.password = :password")
 public class SecurityUser extends EntityMasterStamped {
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
+    @Column(name = "USER_NAME", unique = true, nullable = false)
+    private String userName;
     @Column(name = "PASSWORD")
     private String password;
     @ManyToMany
@@ -45,6 +49,14 @@ public class SecurityUser extends EntityMasterStamped {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

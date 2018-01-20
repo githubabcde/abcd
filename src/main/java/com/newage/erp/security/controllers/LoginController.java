@@ -21,14 +21,14 @@ import javax.validation.constraints.NotNull;
 @RequestScoped
 public class LoginController {
 
-    @Inject
-    private SecurityContext securityContext;
-
     @NotNull
     private String username;
 
     @NotNull
     private String password;
+
+    @Inject
+    private SecurityContext securityContext;
 
     public void login() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -36,7 +36,6 @@ public class LoginController {
         securityContext.authenticate((HttpServletRequest) context.getExternalContext().getRequest(),
                 (HttpServletResponse) context.getExternalContext().getResponse(),
                 withParams().credential(credential));
-
     }
 
     public String getUsername() {

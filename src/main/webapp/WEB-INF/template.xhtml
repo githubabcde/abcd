@@ -11,7 +11,6 @@
             #mySidenav {
                 height: 100%;
                 width: 0px;
-                top: 50px;
                 position: fixed;
                 background-color: #ebedf0;
                 overflow-x: hidden;
@@ -24,15 +23,10 @@
     </h:head>
     <h:body id="body" dir="#{view.locale.language eq 'ar'? 'rtl' : 'ltr' }" style="margin: 0">
         <f:view locale="ar">
-            <div id="top" style="height: 50px;background-color: #007be5;">
-                <div style="float: #{view.locale.language eq 'ar'? 'right' : 'left'}">
-                    <i style="color: white;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-bars" onclick="openNav()"/>                        
-                </div>
-                <h:link outcome="/profile.xhtml" style="font-size: 32px; color: white; float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
-                    <i class="fa fa-user-circle " style="margin: 9px;"/>
-                </h:link>
-            </div>
             <div id="mySidenav">
+                <div style="top: 50px">
+                    <i style="color: #007be5;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-close" onclick="closeNav()"/>                        
+                </div>
                 <h:form>
                     <p:panelMenu>
                         <p:submenu label="${msg.settings}">
@@ -46,6 +40,14 @@
                 </h:form>
             </div>
             <div id="main">
+                <div id="top" style="height: 50px;background-color: #007be5;">
+                    <div style="float: #{view.locale.language eq 'ar'? 'right' : 'left'}">
+                        <i id="menu" style="color: white;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-bars" onclick="openNav()"/>                        
+                    </div>
+                    <h:link outcome="/profile.xhtml" style="font-size: 32px; color: white; float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
+                        <i class="fa fa-user-circle " style="margin: 9px;"/>
+                    </h:link>
+                </div>
                 <div id="content" style="margin: 10px;">
                     <ui:insert id="mainContents" name="mainContent"/>
                     <p:blockUI id="globalBlock" widgetVar="globalBlock" block="body"/>
@@ -61,13 +63,14 @@
         </f:view>
         <script>
             function openNav() {
-                if (document.getElementById("mySidenav").style.width !== "300px") {
-                    document.getElementById("mySidenav").style.width = "300px";
-                    document.getElementById("main").style.#{view.locale.language eq 'ar'?'marginRight':'marginLeft'} = "300px";
-                } else {
-                    document.getElementById("mySidenav").style.width = "0px";
-                    document.getElementById("main").style.margin = "0px";
-                }
+                document.getElementById("mySidenav").style.width = "300px";
+                document.getElementById("main").style.#{view.locale.language eq 'ar'?'marginRight':'marginLeft'} = "300px";
+                document.getElementById("menu").style.display = "none";
+            }
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0px";
+                document.getElementById("main").style.margin = "0px";
+                document.getElementById("menu").style.display = "block";
             }
         </script>
     </h:body>

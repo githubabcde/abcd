@@ -9,17 +9,15 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:growl />
-            <h:outputText value="#{msg.login}"/>
-            <p:separator/>
-            <h:panelGrid columns="2">
-                <p:outputLabel for="userName" value="#{msg.userName}: "/>
-                <p:inputText id="userName" required="true" value="#{loginController.username}" />
-                <p:outputLabel for="password" value="#{msg.password}: "/>
-                <p:password id="password" required="true" value="#{loginController.password}" />
-            </h:panelGrid>
-            <p:separator/>
-            <p:commandButton value="Login" action="#{loginController.login()}" ajax="false"/>
+            <p:panel style="margin-left: auto; margin-right: auto; margin-top: 10%; width: 300px">
+                <h:outputText value="#{msg.login}"/>
+                <p:separator style="width: 100%"/>
+                <p:inputText id="userName" required="true" value="#{loginController.username}"  placeholder="#{msg.userName}" style="width: 100%"/>
+                <p/>
+                <p:password id="password" required="true" value="#{loginController.password}" placeholder="#{msg.password}" style="width: 100%"/>
+                <p:separator style="width: 100%"/>
+                <p:commandButton value="Login" action="#{loginController.login()}" ajax="false"/>
+            </p:panel>
         </h:form>
     </h:body>
 </html>
