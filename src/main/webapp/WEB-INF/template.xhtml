@@ -22,7 +22,7 @@
         </style>
     </h:head>
     <h:body id="body" dir="#{view.locale.language eq 'ar'? 'rtl' : 'ltr' }" style="margin: 0">
-        <f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'en'}">
+        <f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
             <div id="mySidenav">
                 <div style="top: 50px">
                     <i style="color: #007be5;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-close" onclick="closeNav()"/>                        
