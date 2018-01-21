@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 
 @CustomFormAuthenticationMechanismDefinition(loginToContinue = @LoginToContinue(loginPage = "/login.xhtml", errorPage = "/login.xhtml"))
-@Named
+@Named(value = "accountController")
 @RequestScoped
-public class LoginController {
+public class AccountController {
 
     @NotNull
     private String username;
@@ -36,6 +36,14 @@ public class LoginController {
         securityContext.authenticate((HttpServletRequest) context.getExternalContext().getRequest(),
                 (HttpServletResponse) context.getExternalContext().getResponse(),
                 withParams().credential(credential));
+    }
+
+    public void logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    }
+
+    public void changeLanguage(String language) {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("language", language);
     }
 
     public String getUsername() {

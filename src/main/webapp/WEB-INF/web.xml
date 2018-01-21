@@ -67,12 +67,4 @@
         <description>All Users</description>
         <role-name>login</role-name>
     </security-role>
-    <mime-mapping>  
-        <extension>woff2</extension>  
-        <mime-type>application/x-font-woff2</mime-type>  
-    </mime-mapping>
-    <mime-mapping>
-        <extension>woff</extension>
-        <mime-type>application/x-font-woff</mime-type>
-    </mime-mapping>
 </web-app>
