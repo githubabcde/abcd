@@ -10,16 +10,16 @@ import javax.persistence.MappedSuperclass;
  * @author mohammed
  */
 @MappedSuperclass
-public class EntityMaster implements Serializable {
+public class SupperEntity implements Serializable {
 
     @Id
     @Column(name = "ID")
     protected Long id;
 
-    public EntityMaster() {
+    public SupperEntity() {
     }
 
-    public EntityMaster(Long id) {
+    public SupperEntity(Long id) {
         this.id = id;
     }
 

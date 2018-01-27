@@ -45,10 +45,10 @@
         <error-code>404</error-code>
         <location>/error404.xhtml</location>
     </error-page>
-    <!--    <error-page>
-        <exception-type>javax.servlet.ServletException</exception-type>
+    <error-page>
+        <exception-type>javax.ejb.EJBAccessException</exception-type>
         <location>/nopermission.xhtml</location>
-    </error-page>-->
+    </error-page>
     <security-constraint>
         <display-name>secured resources</display-name>
         <web-resource-collection>
@@ -67,4 +67,12 @@
         <description>All Users</description>
         <role-name>login</role-name>
     </security-role>
+    <mime-mapping>
+        <extension>woff</extension>
+        <mime-type>application/x-font-woff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>application/x-font-woff2</mime-type>
+    </mime-mapping>
 </web-app>

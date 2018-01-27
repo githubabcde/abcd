@@ -42,7 +42,7 @@
             <div id="main">
                 <div id="top" style="height: 50px;background-color: #448ed3;">
                     <div style="float: #{view.locale.language eq 'ar'? 'right' : 'left'}">
-                        <i id="menu" style="color: white;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-bars" onclick="openNav()"/>
+                        <i id="menu" style="color: white;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-navicon" onclick="openNav()"/>
                     </div>
                     <div style="float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
                         <h:form>
@@ -58,7 +58,7 @@
                                 <i class="fa fa-user-circle" style="margin: 9px;"/>
                             </p:commandLink>
                             <p:menu overlay="true" trigger="profile" my="left top" at="left bottom">
-                                <p:menuitem value="#{msg.logout}" actionListener="#{accountController.logout()}" action="index.xhtml/?faces-redirect=true"/>
+                                <p:menuitem value="#{msg.logout}" actionListener="#{accountController.logout()}" action="/index.xhtml/?faces-redirect=true"/>
                             </p:menu>
                         </h:form>
                     </div>

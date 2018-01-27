@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
  */
 @MappedSuperclass
 @EntityListeners(EntityListener.class)
-public class EntityMasterStamped extends EntityMaster {
+public class StampedEntity extends SupperEntity {
 
     @Column(name = "CREATE_TIME", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -31,10 +31,10 @@ public class EntityMasterStamped extends EntityMaster {
     @ManyToOne
     protected SecurityUser updateUser;
 
-    public EntityMasterStamped() {
+    public StampedEntity() {
     }
 
-    public EntityMasterStamped(Long id) {
+    public StampedEntity(Long id) {
         super(id);
     }
 

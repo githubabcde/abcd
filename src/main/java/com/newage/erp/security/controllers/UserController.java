@@ -1,11 +1,10 @@
 package com.newage.erp.security.controllers;
 
-import static com.newage.erp.common.controllers.utli.Helper.message;
+import com.newage.erp.common.controllers.SupperCRUDController;
 import com.newage.erp.security.entities.SecurityUser;
-import com.newage.erp.security.services.SecurityUserService;
+import com.newage.erp.security.services.UserService;
 import java.io.Serializable;
-import java.util.List;
-import javax.faces.application.FacesMessage;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -16,55 +15,20 @@ import javax.inject.Inject;
  */
 @Named(value = "userController")
 @ViewScoped
-public class UserController implements Serializable {
-
-    private SecurityUser item;
-    private List<SecurityUser> items;
+public class UserController extends SupperCRUDController<SecurityUser> implements Serializable {
 
     @Inject
-    private SecurityUserService securityUserService;
+    private UserService userService;
 
-    public void prepareList() {
-        items = securityUserService.find();
+    @PostConstruct
+    private void init() {
+        super.clazz = SecurityUser.class;
+        super.supperCRUDService = userService;
     }
 
-    public void prepareCreate() {
-        item = new SecurityUser();
-    }
-
-    public void prepareUpdate(Long id) {
-        item = securityUserService.find(id);
-    }
-
+    @Override
     public void create() {
-        securityUserService.create(item);
-        message(FacesMessage.SEVERITY_INFO, "saved");
-        prepareCreate();
-    }
-
-    public String update() {
-        securityUserService.update(item);
-        return "list?faces-redirect=true";
-    }
-
-    public String remove() {
-        securityUserService.remove(item);
-        return "list?faces-redirect=true";
-    }
-
-    public SecurityUser getItem() {
-        return item;
-    }
-
-    public void setItem(SecurityUser item) {
-        this.item = item;
-    }
-
-    public List<SecurityUser> getItems() {
-        return items;
-    }
-
-    public void setItems(List<SecurityUser> items) {
-        this.items = items;
+        item.setPassword("123");
+        super.create();
     }
 }

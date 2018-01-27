@@ -1,6 +1,6 @@
 package com.newage.erp.security.entities;
 
-import com.newage.erp.common.entities.EntityMasterStamped;
+import com.newage.erp.common.entities.StampedEntity;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity(name = "SecurityUser")
 @Table(name = "SECURITY_USER")
 @NamedQuery(name = "SecurityUser.findByUserNamePassword", query = "SELECT u FROM SecurityUser u WHERE u.userName = :userName AND u.password = :password")
-public class SecurityUser extends EntityMasterStamped {
+public class SecurityUser extends StampedEntity {
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;

@@ -1,7 +1,7 @@
 package com.newage.erp.security;
 
 import com.newage.erp.security.entities.SecurityUser;
-import com.newage.erp.security.services.SecurityUserService;
+import com.newage.erp.security.services.UserService;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -23,7 +23,7 @@ import javax.security.enterprise.identitystore.IdentityStore;
 public class IdentityStoreImpl implements IdentityStore {
 
     @Inject
-    private SecurityUserService userService;
+    private UserService userService;
 
     @Override
     public CredentialValidationResult validate(Credential credential) {

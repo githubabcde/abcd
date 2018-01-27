@@ -1,6 +1,6 @@
 package com.newage.erp.security.entities;
 
-import com.newage.erp.common.entities.EntityMasterStamped;
+import com.newage.erp.common.entities.StampedEntity;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "SecurityPermission")
 @Table(name = "SECURITY_PERMISSION")
-public class SecurityPermission extends EntityMasterStamped {
+public class SecurityPermission extends StampedEntity {
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;

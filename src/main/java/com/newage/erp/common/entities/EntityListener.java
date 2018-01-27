@@ -12,13 +12,13 @@ import javax.persistence.PreUpdate;
 public class EntityListener {
 
     @PrePersist
-    public void preCreate(EntityMasterStamped entity) {
+    public void preCreate(StampedEntity entity) {
         entity.setCreateTime(new Date());
         entity.setCreateUser(new SecurityUser(1l));
     }
 
     @PreUpdate
-    public void preUpdate(EntityMasterStamped entity) {
+    public void preUpdate(StampedEntity entity) {
         entity.setUpdateTime(new Date());
         entity.setUpdateUser(new SecurityUser(1l));
     }
