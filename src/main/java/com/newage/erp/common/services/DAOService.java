@@ -18,7 +18,7 @@ import javax.persistence.criteria.Root;
 @Stateless
 public class DAOService {
 
-    @PersistenceContext(unitName = "erpPU")
+    @PersistenceContext
     private EntityManager em;
 
     public void persist(SupperEntity e) {

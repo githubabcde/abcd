@@ -13,7 +13,7 @@ import javax.inject.Inject;
  *
  * @author mohammed
  */
-@Named(value = "userController")
+@Named
 @ViewScoped
 public class UserController extends SupperCRUDController<SecurityUser> implements Serializable {
 

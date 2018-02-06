@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.security.enterprise.CallerPrincipal;
 import javax.security.enterprise.credential.Credential;
@@ -45,7 +46,8 @@ public class IdentityStoreImpl implements IdentityStore {
             user.getPermissions().forEach((permission) -> {
                 groups.add(permission.getName());
             });
-            return new CredentialValidationResult(new CallerPrincipal("reza"), groups);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userId", user.getId());
+            return new CredentialValidationResult(new CallerPrincipal(user.getUserName()), groups);
         }
         return INVALID_RESULT;
     }
