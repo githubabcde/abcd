@@ -15,7 +15,7 @@ import javax.inject.Inject;
  */
 @Named
 @ViewScoped
-public class UserController extends SupperCRUDController<SecurityUser> implements Serializable {
+public class UserController extends SupperCRUDController<SecurityUser> {
 
     @Inject
     private UserService userService;

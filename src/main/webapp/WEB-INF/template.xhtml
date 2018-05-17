@@ -25,7 +25,7 @@
         <f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
             <div id="mySidenav">
                 <div style="top: 50px">
-                    <i style="color: #007be5;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-close" onclick="closeNav()"/>                        
+                    <i style="color: #007be5;font-size:24px;cursor:pointer;margin: 13px;" class="fa fa-close" onclick="closeNav()"/>                        
                 </div>
                 <h:form>
                     <p:panelMenu>
@@ -42,20 +42,20 @@
             <div id="main">
                 <div id="top" style="height: 50px;background-color: #448ed3;">
                     <div style="float: #{view.locale.language eq 'ar'? 'right' : 'left'}">
-                        <i id="menu" style="color: white;font-size:30px;cursor:pointer;margin: 9px;" class="fa fa-navicon" onclick="openNav()"/>
+                        <i id="menu" style="color: white;font-size:24px;cursor:pointer;margin: 13px;" class="fa fa-navicon" onclick="openNav()"/>
                     </div>
                     <div style="float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
                         <h:form>
-                            <p:commandLink id="languages" style="font-size: 32px; color: white;text-decoration: none">
-                                <i class="fa fa-language" style="margin: 9px;"/>
+                            <p:commandLink id="languages" style="font-size: 24px; color: white;text-decoration: none">
+                                <i class="fa fa-language" style="margin: 13px;"/>
                             </p:commandLink>
                             <p:menu overlay="true" trigger="languages" my="left top" at="left bottom">
                                 <p:menuitem value="عربي" actionListener="#{accountController.changeLanguage('ar')}" ajax="false"/>
                                 <p:separator/>
                                 <p:menuitem value="English" actionListener="#{accountController.changeLanguage('en')}" ajax="false"/>
                             </p:menu>
-                            <p:commandLink id="profile" style="font-size: 32px; color: white;text-decoration: none">
-                                <i class="fa fa-user-circle" style="margin: 9px;"/>
+                            <p:commandLink id="profile" style="font-size: 24px; color: white;text-decoration: none">
+                                <i class="fa fa-user-circle" style="margin: 13px;"/>
                             </p:commandLink>
                             <p:menu overlay="true" trigger="profile" my="left top" at="left bottom">
                                 <p:menuitem value="#{msg.logout}" actionListener="#{accountController.logout()}" action="/index.xhtml/?faces-redirect=true"/>

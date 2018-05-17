@@ -15,7 +15,7 @@ import javax.inject.Inject;
  */
 @Named
 @ViewScoped
-public class GroupController extends SupperCRUDController<SecurityGroup> implements Serializable {
+public class GroupController extends SupperCRUDController<SecurityGroup> {
 
     @Inject
     private GroupService groupService;

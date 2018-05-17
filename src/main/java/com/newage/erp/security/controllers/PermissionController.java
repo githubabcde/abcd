@@ -15,7 +15,7 @@ import javax.inject.Inject;
  */
 @Named
 @ViewScoped
-public class PermissionController extends SupperCRUDController<SecurityPermission> implements Serializable {
+public class PermissionController extends SupperCRUDController<SecurityPermission> {
 
     @Inject
     private PermissionService groupService;
