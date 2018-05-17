@@ -1,7 +1,6 @@
 package com.newage.erp.common.services;
 
 import com.newage.erp.common.entities.SupperEntity;
-import com.newage.erp.security.services.SecurityService;
 import java.util.List;
 import javax.ejb.EJBAccessException;
 import javax.inject.Inject;

@@ -1,4 +1,4 @@
-package com.newage.erp.security.services;
+package com.newage.erp.common.services;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

@@ -8,7 +8,7 @@
     <ui:composition template="/WEB-INF/templateList.xhtml">
         <ui:param name="controller" value="#{userController}"/>
         <ui:define name="content">
-            <p:dataTable value="#{userController.items}" var="item">
+            <p:dataTable value="#{userController.items}" var="item" rows="10" paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                 <p:column headerText="#">
                     <p:link value="#{item.id}" outcome="update?faces-redirect=true">
                         <f:param name="id" value="#{item.id}"/>

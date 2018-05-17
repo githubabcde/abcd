@@ -4,7 +4,7 @@ import static com.newage.erp.common.controllers.utli.Helper.message;
 import static com.newage.erp.common.controllers.utli.Helper.redirect;
 import com.newage.erp.common.entities.SupperEntity;
 import com.newage.erp.common.services.SupperCRUDService;
-import com.newage.erp.security.services.SecurityService;
+import com.newage.erp.common.services.SecurityService;
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

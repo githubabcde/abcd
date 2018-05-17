@@ -1,6 +1,6 @@
 package com.newage.erp.common.controllers.utli;
 
-import com.newage.erp.security.services.SecurityService;
+import com.newage.erp.common.services.SecurityService;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;

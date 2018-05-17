@@ -1,4 +1,4 @@
-package com.newage.erp.security;
+package com.newage.erp.common.services;
 
 import com.newage.erp.security.entities.SecurityUser;
 import com.newage.erp.security.services.UserService;
