@@ -13,7 +13,7 @@ import javax.persistence.Table;
  *
  * @author mohammed
  */
-@Entity(name = "SecurityGroup")
+@Entity
 @Table(name = "SECURITY_GROUP")
 public class SecurityGroup extends StampedEntity {
 

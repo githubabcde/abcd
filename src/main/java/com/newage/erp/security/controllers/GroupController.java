@@ -21,7 +21,6 @@ public class GroupController extends SupperCRUDController<SecurityGroup> {
 
     @PostConstruct
     private void init() {
-        super.clazz = SecurityGroup.class;
         super.supperCRUDService = groupService;
     }
 }

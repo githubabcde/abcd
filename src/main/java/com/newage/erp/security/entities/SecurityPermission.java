@@ -11,17 +11,16 @@ import javax.persistence.Table;
  *
  * @author mohammed
  */
-@Entity(name = "SecurityPermission")
+@Entity
 @Table(name = "SECURITY_PERMISSION")
 public class SecurityPermission extends StampedEntity {
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
-    @ManyToMany(mappedBy = "permissions")
-    private List<SecurityUser> users;
-    @ManyToMany(mappedBy = "permissions")
-    private List<SecurityGroup> groups;
-
+    
+    @Column(name = "PERMISSION", unique = true, nullable = false)
+    private String permission;
+    
     public SecurityPermission() {
     }
     
@@ -37,19 +36,11 @@ public class SecurityPermission extends StampedEntity {
         this.name = name;
     }
 
-    public List<SecurityUser> getUsers() {
-        return users;
+    public String getPermission() {
+        return permission;
     }
 
-    public void setUsers(List<SecurityUser> users) {
-        this.users = users;
-    }
-
-    public List<SecurityGroup> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<SecurityGroup> groups) {
-        this.groups = groups;
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
 }

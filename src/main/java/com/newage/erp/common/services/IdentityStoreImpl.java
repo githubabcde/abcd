@@ -38,13 +38,14 @@ public class IdentityStoreImpl implements IdentityStore {
         SecurityUser user = userService.findByUserNamePassword(usernamePasswordCredential.getCaller(), usernamePasswordCredential.getPasswordAsString());
         if (Objects.nonNull(user)) {
             Set<String> groups = new HashSet<>();
+            groups.add("login");
             user.getGroups().forEach((group) -> {
                 group.getPermissions().forEach((permission) -> {
-                    groups.add(permission.getName());
+                    groups.add(permission.getPermission());
                 });
             });
             user.getPermissions().forEach((permission) -> {
-                groups.add(permission.getName());
+                groups.add(permission.getPermission());
             });
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userId", user.getId());
             return new CredentialValidationResult(new CallerPrincipal(user.getUserName()), groups);

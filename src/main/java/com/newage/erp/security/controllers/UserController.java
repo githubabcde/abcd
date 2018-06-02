@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import org.primefaces.event.TransferEvent;
 
 /**
  *
@@ -21,7 +22,6 @@ public class UserController extends SupperCRUDController<SecurityUser> {
 
     @PostConstruct
     private void init() {
-        super.clazz = SecurityUser.class;
         super.supperCRUDService = userService;
     }
 
@@ -29,5 +29,9 @@ public class UserController extends SupperCRUDController<SecurityUser> {
     public void create() {
         item.setPassword("123");
         super.create();
+    }
+
+    public void onTransfer(TransferEvent event) {
+        event.getItems();
     }
 }

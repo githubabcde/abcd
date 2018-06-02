@@ -25,14 +25,13 @@ public class SupperCRUDController<T extends SupperEntity> implements Serializabl
     protected T item;
     protected List<T> items;
 
-    protected Class clazz;
     protected SupperCRUDService<T> supperCRUDService;
     
     @Inject
     protected SecurityService ss;
 
     public void prepareList() throws EJBAccessException {
-        if (!ss.hasPermission(clazz.getSimpleName()+".desplay")) {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".desplay")) {
             redirect("/error403.xhtml");
             return;
         }
@@ -40,12 +39,12 @@ public class SupperCRUDController<T extends SupperEntity> implements Serializabl
     }
 
     public void prepareCreate() {
-        if (!ss.hasPermission(clazz.getSimpleName()+".create")) {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".create")) {
             redirect("/error403.xhtml");
             return;
         }
         try {
-            Constructor<T> constructor = clazz.getDeclaredConstructor();
+            Constructor<T> constructor = supperCRUDService.getEntityClass().getDeclaredConstructor();
             item = constructor.newInstance();
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             Logger.getLogger(SupperCRUDController.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,7 +52,7 @@ public class SupperCRUDController<T extends SupperEntity> implements Serializabl
     }
 
     public void prepareUpdate(Long id) {
-        if (!ss.hasPermission(clazz.getSimpleName()+".update")) {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".update")) {
             redirect("/error403.xhtml");
             return;
         }
@@ -72,7 +71,7 @@ public class SupperCRUDController<T extends SupperEntity> implements Serializabl
     }
 
     public String remove() {
-        if (!ss.hasPermission(clazz.getSimpleName()+".remove")) {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".remove")) {
             redirect("/error403.xhtml");
             return "/error403.xhtml";
         }
