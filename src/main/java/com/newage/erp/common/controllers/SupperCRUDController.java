@@ -1,6 +1,5 @@
 package com.newage.erp.common.controllers;
 
-import static com.newage.erp.common.controllers.utli.Helper.message;
 import static com.newage.erp.common.controllers.utli.Helper.redirect;
 import com.newage.erp.common.entities.SupperEntity;
 import com.newage.erp.common.services.SupperCRUDService;
@@ -14,6 +13,7 @@ import java.util.logging.Logger;
 import javax.ejb.EJBAccessException;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
+import static com.newage.erp.common.controllers.utli.Helper.addFacesMessage;
 
 /**
  *
@@ -61,7 +61,7 @@ public class SupperCRUDController<T extends SupperEntity> implements Serializabl
 
     public void create() {
         supperCRUDService.create(item);
-        message(FacesMessage.SEVERITY_INFO, "saved");
+        addFacesMessage(FacesMessage.SEVERITY_INFO, "saved");
         prepareCreate();
     }
 

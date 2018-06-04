@@ -14,7 +14,7 @@ import javax.faces.context.FacesContext;
  */
 public class Helper {
 
-    public static void message(Severity severity, String summary) {
+    public static void addFacesMessage(Severity severity, String summary) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, msg(summary), null));
     }
 
