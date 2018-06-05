@@ -11,16 +11,16 @@ import javax.persistence.MappedSuperclass;
  * @author mohammed
  */
 @MappedSuperclass
-public class SupperEntity implements Serializable {
+public class SuperEntity implements Serializable {
 
     @Id
     @Column(name = "ID")
     protected Long id;
 
-    public SupperEntity() {
+    public SuperEntity() {
     }
 
-    public SupperEntity(Long id) {
+    public SuperEntity(Long id) {
         this.id = id;
     }
 
@@ -52,6 +52,6 @@ public class SupperEntity implements Serializable {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        return Objects.equals(this.id, ((SupperEntity) obj).id);
+        return Objects.equals(this.id, ((SuperEntity) obj).id);
     }
 }

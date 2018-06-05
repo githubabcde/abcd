@@ -1,8 +1,8 @@
 package com.newage.erp.common.controllers;
 
 import static com.newage.erp.common.controllers.utli.Helper.redirect;
-import com.newage.erp.common.entities.SupperEntity;
-import com.newage.erp.common.services.SupperCRUDService;
+import com.newage.erp.common.entities.SuperEntity;
+import com.newage.erp.common.services.SuperCRUDService;
 import com.newage.erp.common.services.SecurityService;
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
@@ -20,12 +20,12 @@ import static com.newage.erp.common.controllers.utli.Helper.addFacesMessage;
  * @author mohammed
  * @param <T>
  */
-public class SupperCRUDController<T extends SupperEntity> implements Serializable {
+public class SuperCRUDController<T extends SuperEntity> implements Serializable {
 
     protected T item;
     protected List<T> items;
 
-    protected SupperCRUDService<T> supperCRUDService;
+    protected SuperCRUDService<T> supperCRUDService;
     
     @Inject
     protected SecurityService ss;
@@ -47,7 +47,7 @@ public class SupperCRUDController<T extends SupperEntity> implements Serializabl
             Constructor<T> constructor = supperCRUDService.getEntityClass().getDeclaredConstructor();
             item = constructor.newInstance();
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            Logger.getLogger(SupperCRUDController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SuperCRUDController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

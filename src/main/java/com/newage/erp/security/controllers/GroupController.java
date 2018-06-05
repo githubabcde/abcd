@@ -1,6 +1,6 @@
 package com.newage.erp.security.controllers;
 
-import com.newage.erp.common.controllers.SupperCRUDController;
+import com.newage.erp.common.controllers.SuperCRUDController;
 import com.newage.erp.security.entities.SecurityGroup;
 import com.newage.erp.security.services.GroupService;
 import javax.annotation.PostConstruct;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
  */
 @Named
 @ViewScoped
-public class GroupController extends SupperCRUDController<SecurityGroup> {
+public class GroupController extends SuperCRUDController<SecurityGroup> {
 
     @Inject
     private GroupService groupService;

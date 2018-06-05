@@ -1,6 +1,6 @@
 package com.newage.erp.security.controllers;
 
-import com.newage.erp.common.controllers.SupperCRUDController;
+import com.newage.erp.common.controllers.SuperCRUDController;
 import com.newage.erp.security.entities.SecurityUser;
 import com.newage.erp.security.services.UserService;
 import javax.annotation.PostConstruct;
@@ -15,7 +15,7 @@ import org.primefaces.event.TransferEvent;
  */
 @Named
 @ViewScoped
-public class UserController extends SupperCRUDController<SecurityUser> {
+public class UserController extends SuperCRUDController<SecurityUser> {
 
     @Inject
     private UserService userService;

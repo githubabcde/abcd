@@ -1,6 +1,6 @@
 package com.newage.erp.common.services;
 
-import com.newage.erp.common.entities.SupperEntity;
+import com.newage.erp.common.entities.SuperEntity;
 import java.util.List;
 import javax.ejb.EJBAccessException;
 import javax.inject.Inject;
@@ -10,7 +10,7 @@ import javax.inject.Inject;
  * @author mohammed
  * @param <T>
  */
-public class SupperCRUDService<T extends SupperEntity> {
+public class SuperCRUDService<T extends SuperEntity> {
 
     protected final Class<T> entityClass;
 
@@ -19,7 +19,7 @@ public class SupperCRUDService<T extends SupperEntity> {
     @Inject
     protected SecurityService ss;
 
-    public SupperCRUDService(Class clazz) {
+    public SuperCRUDService(Class clazz) {
         this.entityClass = clazz;
     }
 

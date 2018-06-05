@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
  */
 @MappedSuperclass
 @EntityListeners(EntityListener.class)
-public class StampedEntity extends SupperEntity {
+public class StampedEntity extends SuperEntity {
 
     @Column(name = "CREATE_TIME", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)

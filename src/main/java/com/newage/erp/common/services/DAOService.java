@@ -1,6 +1,6 @@
 package com.newage.erp.common.services;
 
-import com.newage.erp.common.entities.SupperEntity;
+import com.newage.erp.common.entities.SuperEntity;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.Stateless;
@@ -21,13 +21,13 @@ public class DAOService {
     @PersistenceContext(unitName = "ERPPU")
     private EntityManager em;
 
-    public void persist(SupperEntity e) {
+    public void persist(SuperEntity e) {
         e.setId(getNewId(e.getClass()));
         em.persist(e);
 
     }
 
-    public void merge(SupperEntity e) {
+    public void merge(SuperEntity e) {
         em.merge(e);
     }
 
