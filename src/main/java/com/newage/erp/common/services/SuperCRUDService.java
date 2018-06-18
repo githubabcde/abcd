@@ -19,39 +19,39 @@ public class SuperCRUDService<T extends SuperEntity> {
     @Inject
     protected SecurityService ss;
 
-    public SuperCRUDService(Class clazz) {
-        this.entityClass = clazz;
+    public SuperCRUDService(Class entityClass) {
+        this.entityClass = entityClass;
     }
 
-    public List<T> find() throws EJBAccessException {
+    public List<T> find() {
         if (!ss.hasPermission(entityClass.getSimpleName() + ".desplay")) {
             throw new EJBAccessException();
         }
         return dao.find(entityClass);
     }
 
-    public T find(Long id) throws EJBAccessException {
+    public T find(Long id) {
         if (!ss.hasPermission(entityClass.getSimpleName() + ".desplay")) {
             throw new EJBAccessException();
         }
         return dao.find(entityClass, id);
     }
 
-    public void create(T entity) throws EJBAccessException {
+    public void create(T entity) {
         if (!ss.hasPermission(entityClass.getSimpleName() + ".create")) {
             throw new EJBAccessException();
         }
         dao.persist(entity);
     }
 
-    public void update(T entity) throws EJBAccessException {
+    public void update(T entity) {
         if (!ss.hasPermission(entityClass.getSimpleName() + ".update")) {
             throw new EJBAccessException();
         }
         dao.merge(entity);
     }
 
-    public void remove(T entity) throws EJBAccessException {
+    public void remove(T entity) {
         if (!ss.hasPermission(entityClass.getSimpleName() + ".remove")) {
             throw new EJBAccessException();
         }

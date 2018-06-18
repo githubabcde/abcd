@@ -10,10 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJBAccessException;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import static com.newage.erp.common.controllers.utli.Helper.addFacesMessage;
+import javax.ejb.EJBAccessException;
 
 /**
  *
@@ -26,20 +26,20 @@ public class SuperCRUDController<T extends SuperEntity> implements Serializable 
     protected List<T> items;
 
     protected SuperCRUDService<T> supperCRUDService;
-    
+
     @Inject
     protected SecurityService ss;
 
-    public void prepareList() throws EJBAccessException {
-        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".desplay")) {
+    public void prepareList() {
+        try {
+            items = supperCRUDService.find();
+        } catch (EJBAccessException e) {
             redirect("/error403.xhtml");
-            return;
         }
-        items = supperCRUDService.find();
     }
 
     public void prepareCreate() {
-        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".create")) {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName() + ".create")) {
             redirect("/error403.xhtml");
             return;
         }
@@ -52,7 +52,7 @@ public class SuperCRUDController<T extends SuperEntity> implements Serializable 
     }
 
     public void prepareUpdate(Long id) {
-        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".update")) {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName() + ".update")) {
             redirect("/error403.xhtml");
             return;
         }
@@ -60,23 +60,35 @@ public class SuperCRUDController<T extends SuperEntity> implements Serializable 
     }
 
     public void create() {
-        supperCRUDService.create(item);
-        addFacesMessage(FacesMessage.SEVERITY_INFO, "saved");
-        prepareCreate();
+        try {
+            supperCRUDService.create(item);
+            addFacesMessage(FacesMessage.SEVERITY_INFO, "saved");
+            prepareCreate();
+        } catch (EJBAccessException e) {
+            redirect("/error403.xhtml");
+        }
     }
 
     public String update() {
-        supperCRUDService.update(item);
-        return "list?faces-redirect=true";
-    }
-
-    public String remove() {
-        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName()+".remove")) {
+        try {
+            supperCRUDService.update(item);
+            addFacesMessage(FacesMessage.SEVERITY_INFO, "updated");
+            return "list?faces-redirect=true";
+        } catch (EJBAccessException e) {
             redirect("/error403.xhtml");
             return "/error403.xhtml";
         }
-        supperCRUDService.remove(item);
-        return "list?faces-redirect=true";
+    }
+
+    public String remove() {
+        try {
+            supperCRUDService.remove(item);
+            addFacesMessage(FacesMessage.SEVERITY_INFO, "removed");
+            return "list?faces-redirect=true";
+        } catch (EJBAccessException e) {
+            redirect("/error403.xhtml");
+            return "/error403.xhtml";
+        }
     }
 
     public T getItem() {
