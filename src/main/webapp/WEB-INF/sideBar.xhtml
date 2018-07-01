@@ -1,6 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp"
 	xmlns:p="http://primefaces.org/ui">
 	<aside class="main-sidebar">
 		<section class="sidebar">
@@ -15,8 +16,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><p:commandLink value="#{msg.users}" actionListener="#{paginationController.goTo('/WEB-INF/security/user.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
-							<li><p:commandLink value="#{msg.groups}" actionListener="#{paginationController.goTo('/WEB-INF/security/group.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
+							<li><my:goTo lable="#{msg.users}" to="/WEB-INF/security/user.xhtml"/></li>
+							<li><my:goTo lable="#{msg.groups}" to="/WEB-INF/security/group.xhtml"/></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -28,9 +29,9 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><p:commandLink value="#{msg.currencies}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/currency.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
-							<li><p:commandLink value="#{msg.accounts}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/account.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
-							<li><p:commandLink value="#{msg.transactions}" actionListener="#{paginationController.goTo('/WEB-INF/accounting/transaction.xhtml')}" update="mainContents" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/></li>
+							<li><my:goTo lable="#{msg.currencies}" to="/WEB-INF/accounting/currency.xhtml"/></li>
+							<li><my:goTo lable="#{msg.accounts}" to="/WEB-INF/accounting/account.xhtml"/></li>
+							<li><my:goTo lable="#{msg.transactions}" to="/WEB-INF/accounting/transaction.xhtml"/></li>
 						</ul>
 					</li>
 				</ul>
