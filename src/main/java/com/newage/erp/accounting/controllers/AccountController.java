@@ -28,4 +28,8 @@ public class AccountController extends SuperCRUDController<Account, AccountServi
 	public List<Currency> getCurrencies() {
 		return currencyService.find();
 	}
+	
+	public List<Account> getParints() {
+		return service.getParints();
+	}
 }

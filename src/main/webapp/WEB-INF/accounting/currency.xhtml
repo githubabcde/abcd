@@ -2,12 +2,11 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp"
 	template="/WEB-INF/templateCRUD.xhtml">
 	<ui:param name="controller" value="#{currencyController}" />
 	<ui:define name="formContent">
-        <p:outputLabel for="code" value="${msg.code}"/>
-        <p:inputText id="code" value="#{currencyController.item.code}" required="true"/>
-        <p:outputLabel for="fraction" value="${msg.fraction}"/>
-        <p:inputText id="fraction" value="#{currencyController.item.fraction}" required="true"/>
+        <my:inputText id="code" lable="${msg.code}" value="#{currencyController.item.code}" required="true" />
+        <my:inputText id="fraction" lable="${msg.fraction}" value="#{currencyController.item.fraction}" required="true" />
 	</ui:define>
 </ui:composition>

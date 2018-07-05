@@ -3,6 +3,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp"
 	xmlns:p="http://primefaces.org/ui">
 <f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
 	<h:head>
@@ -13,24 +14,124 @@
 		<h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
 		<h:outputStylesheet name="/css/AdminLTE.css" />
 		<h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
-		<h:outputStylesheet name="/css/skins/skin-blue.css" />
+		<h:outputStylesheet name="/css/skin-blue.css" />
 		<h:outputScript name="/js/bootstrap.js" />
 		<h:outputScript name="/js/adminlte.js" />
 	</h:head>
 	<h:body id="body" class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
-			<ui:include src="/WEB-INF/header.xhtml" />
-			<ui:include src="/WEB-INF/sideBar.xhtml" />
+			<header class="main-header">
+				<h:form>
+					<p:commandLink class="logo" update="mainContents" actionListener="#{paginationController.goTo('/indexContents.xhtml')}" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()">
+						<span class="logo-mini"><b>N</b>A</span>
+						<span class="logo-lg"><b>New</b>AGE</span>
+					</p:commandLink>
+					<!-- Header Navbar -->
+					<nav class="navbar navbar-static-top" role="navigation">
+						<!-- Sidebar toggle button-->
+						<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+							<span class="sr-only">Toggle navigation</span>
+						</a>
+						<!-- Navbar Right Menu -->
+						<div class="navbar-custom-menu">
+							<ul class="nav navbar-nav">
+								<!-- Languages -->
+								<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-language"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<ul class="menu">
+											<li><h:commandLink value="عربي" actionListener="#{securityController.changeLanguage('ar')}" /></li>
+											<li><h:commandLink value="English" actionListener="#{securityController.changeLanguage('en')}" /></li>
+										</ul>
+									</li>
+								</ul>
+								</li>
+								<!-- User Account Menu -->
+								<li class="dropdown user user-menu">
+									<!-- Menu Toggle Button -->
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user-o" />
+								</a>
+									<ul class="dropdown-menu">
+										<!-- The user image in the menu -->
+										<li class="user-header">
+											<p>${request.userPrincipal.name} <small>Member since Nov. 2012</small></p>
+										</li>
+										<!-- Menu Body -->
+										<li class="user-body">
+											<div class="row">
+												<div class="col-xs-4 text-center">
+													<a href="#">Followers</a>
+												</div>
+												<div class="col-xs-4 text-center">
+													<a href="#">Sales</a>
+												</div>
+												<div class="col-xs-4 text-center">
+													<a href="#">Friends</a>
+												</div>
+											</div> <!-- /.row -->
+										</li>
+										<!-- Menu Footer-->
+										<li class="user-footer">
+											<div class="pull-left">
+												<a href="#" class="btn btn-default btn-flat">Profile</a>
+											</div>
+											<div class="pull-right">
+												<p:commandLink value="#{msg.logout}" actionListener="#{securityController.logout}" action="/index.xhtml/?faces-redirect=true" class="btn btn-default btn-flat" />
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</h:form>
+			</header>
+			<aside class="main-sidebar">
+				<section class="sidebar">
+					<h:form>
+						<ul class="sidebar-menu" data-widget="tree">
+							<li class="treeview"><a href="#"> <i class="fa fa-lock" />
+									<span>#{msg.security}</span> <span class="pull-right-container">
+										<i class="fa fa-angle-left pull-right" />
+								</span>
+							</a>
+								<ul class="treeview-menu">
+									<li><my:goTo lable="#{msg.users}"
+											to="/WEB-INF/security/user.xhtml" /></li>
+									<li><my:goTo lable="#{msg.groups}"
+											to="/WEB-INF/security/group.xhtml" /></li>
+								</ul></li>
+							<li class="treeview"><a href="#"> <i class="fa fa-cogs" />
+									<span>#{msg.accounting}</span> <span
+									class="pull-right-container"> <i
+										class="fa fa-angle-left pull-right" />
+								</span>
+							</a>
+								<ul class="treeview-menu">
+									<li><my:goTo lable="#{msg.currencies}"
+											to="/WEB-INF/accounting/currency.xhtml" /></li>
+									<li><my:goTo lable="#{msg.accounts}"
+											to="/WEB-INF/accounting/account.xhtml" /></li>
+									<li><my:goTo lable="#{msg.transactions}"
+											to="/WEB-INF/accounting/transaction.xhtml" /></li>
+								</ul></li>
+						</ul>
+					</h:form>
+				</section>
+			</aside>
 			<h:panelGroup id="mainContents" layout="block" styleClass="content-wrapper">
 				<section class="content container-fluid">
-					<ui:include src="#{paginationController.currentContent}"/>
+					<ui:include src="#{paginationController.currentContent}" />
 				</section>
 			</h:panelGroup>
 			<p:blockUI id="globalBlock" widgetVar="globalBlock" block="body">
-				<i class="fa fa-spinner"/>
+				<i class="fa fa-spinner" />
 				<h:outputText value=" #{msg.processing} ..." />
 			</p:blockUI>
-			<p:growl id="globalMessages"/>
+			<p:growl id="globalMessages" />
 			<h:form id="confarmForm">
 				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 					<p:commandButton value="${msg.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />

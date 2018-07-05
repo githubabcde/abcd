@@ -2,7 +2,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp">
 	<h:form>
 		<p:fragment>
 			<p:commandLink actionListener="#{controller.prepareList}" update="@form" rendered="#{controller.item ne null}" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()">
@@ -14,11 +15,8 @@
 		</p:fragment>
 		<p:separator/>
 		<h:panelGroup layout="block" rendered="#{controller.item ne null}">
-		    <h:panelGrid columns="2">
-		    	<p:outputLabel for="name" value="${msg.name}" />
-		    	<p:inputText id="name" value="#{controller.item.name}" required="true" />
-		    	<ui:insert name="formContent"/>
-		    </h:panelGrid>
+	    	<my:inputText id="name" lable="${msg.name}" value="#{controller.item.name}" required="true" />
+	    	<ui:insert name="formContent"/>
 		    <p:separator/>
 		    <p:commandButton value="${msg.add}" actionListener="#{controller.create}" update="@form globalMessages" rendered="#{controller.item.id eq null}" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/>
 		    <p:commandButton value="#{msg.edit}" actionListener="#{controller.update}" update="@form globalMessages" rendered="#{controller.item.id ne null}" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()">
@@ -30,7 +28,7 @@
 		</h:panelGroup>
 		<p:dataTable value="#{controller.items}" var="item" rendered="#{controller.item eq null}" rows="10" paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 			<f:event type="preRenderComponent" listener="#{controller['prepareList']}" />
-			<p:column headerText="#{msg.name}" filterBy="#{item.name}" filterMatchMode="contains" sortBy="#{item.name}">
+			<p:column filterBy="#{item.name}" filterMatchMode="contains" sortBy="#{item.name}">
 	    		<p:commandLink value="#{item.name}" actionListener="#{controller.prepareUpdate(item.id)}" update="@form" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()"/>
 			</p:column>
 			<ui:insert name="listContent" />
