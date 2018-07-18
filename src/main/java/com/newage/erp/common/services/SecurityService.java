@@ -1,6 +1,7 @@
 package com.newage.erp.common.services;
 
 import java.util.Objects;
+import javax.ejb.EJBAccessException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.security.enterprise.SecurityContext;
@@ -20,5 +21,11 @@ public class SecurityService {
             return true;
         }
         return sc.isCallerInRole(permission);
+    }
+
+    public void applyPermission(String permission) {
+        if (!hasPermission(permission)) {
+            throw new EJBAccessException();
+        }
     }
 }

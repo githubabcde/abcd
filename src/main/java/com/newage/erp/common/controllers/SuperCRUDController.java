@@ -31,6 +31,10 @@ public class SuperCRUDController<T extends SuperEntity> implements Serializable 
     protected SecurityService ss;
 
     public void prepareList() {
+        if (!ss.hasPermission(supperCRUDService.getEntityClass().getSimpleName() + ".desplay")) {
+            redirect("/error403.xhtml");
+            return;
+        }
         try {
             items = supperCRUDService.find();
         } catch (EJBAccessException e) {

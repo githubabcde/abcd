@@ -2,7 +2,6 @@ package com.newage.erp.common.services;
 
 import com.newage.erp.common.entities.SuperEntity;
 import java.util.List;
-import javax.ejb.EJBAccessException;
 import javax.inject.Inject;
 
 /**
@@ -24,37 +23,27 @@ public class SuperCRUDService<T extends SuperEntity> {
     }
 
     public List<T> find() {
-        if (!ss.hasPermission(entityClass.getSimpleName() + ".desplay")) {
-            throw new EJBAccessException();
-        }
+        ss.applyPermission(entityClass.getSimpleName() + ".desplay");
         return dao.find(entityClass);
     }
 
     public T find(Long id) {
-        if (!ss.hasPermission(entityClass.getSimpleName() + ".desplay")) {
-            throw new EJBAccessException();
-        }
+        ss.applyPermission(entityClass.getSimpleName() + ".desplay");
         return dao.find(entityClass, id);
     }
 
     public void create(T entity) {
-        if (!ss.hasPermission(entityClass.getSimpleName() + ".create")) {
-            throw new EJBAccessException();
-        }
+        ss.applyPermission(entityClass.getSimpleName() + ".create");
         dao.persist(entity);
     }
 
     public void update(T entity) {
-        if (!ss.hasPermission(entityClass.getSimpleName() + ".update")) {
-            throw new EJBAccessException();
-        }
+        ss.applyPermission(entityClass.getSimpleName() + ".update");
         dao.merge(entity);
     }
 
     public void remove(T entity) {
-        if (!ss.hasPermission(entityClass.getSimpleName() + ".remove")) {
-            throw new EJBAccessException();
-        }
+        ss.applyPermission(entityClass.getSimpleName() + ".remove");
         dao.remove(entity);
     }
 
