@@ -9,12 +9,14 @@
         <title>#{msg.newAgeErp}</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
         <h:outputStylesheet name="/css/bootstrap.css"/>
+        <h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}"/>
         <h:outputStylesheet name="/css/AdminLTE.css"/>
-        <h:outputStylesheet name="/css/skin-blue.css"/>
+        <h:outputStylesheet name="/css/skins/skin-blue.css"/>
+        <h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}"/>
     </h:head>
-    <h:body id="body" dir="#{view.locale.language eq 'en'? 'ltr' : 'rtl'}">
+    <h:body id="body" class="hold-transition skin-blue sidebar-mini">
         <f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'en'}">
-            <div class="wrapper skin-blue">
+            <div class="wrapper">
                 <!-- Main Header -->
                 <header class="main-header">
 
@@ -131,13 +133,24 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <!-- Language Menu -->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-language"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <h:form>
+                                            <p:commandLink value="عربي" actionListener="#{accountController.changeLanguage('ar')}" ajax="false"/>
+                                            <p:separator/>
+                                            <p:commandLink value="English" actionListener="#{accountController.changeLanguage('en')}" ajax="false"/>
+                                        </h:form>
+                                    </ul>
+                                </li>
                                 <!-- User Account Menu -->
                                 <li class="dropdown user user-menu">
                                     <!-- Menu Toggle Button -->
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <!-- The user image in the navbar-->
-                                        <h:graphicImage name="/images/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                        <i class="fa fa-user-o"/>
                                         <span class="hidden-xs">${request.userPrincipal.name}</span>
                                     </a>
                                     <ul class="dropdown-menu">
@@ -146,7 +159,7 @@
                                             <h:graphicImage name="/images/user2-160x160.jpg" class="img-circle" alt="User Image"/>
 
                                             <p>
-                                                Alexander Pierce - Web Developer
+                                                ${request.userPrincipal.name}
                                                 <small>Member since Nov. 2012</small>
                                             </p>
                                         </li>
@@ -180,7 +193,7 @@
                         </div>
                     </nav>
                 </header>
-                <!-- Left side column. contains the logo and sidebar -->
+                <!-- Side column. contains the logo and sidebar -->
                 <aside class="main-sidebar">
                     <!-- sidebar: style can be found in sidebar.less -->
                     <section class="sidebar">
@@ -190,7 +203,7 @@
                             <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
                             <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
                             <li class="treeview">
-                                <a href="#"><i class="fa fa-link"></i> <span>${msg.security}</span>
+                                <a href="#"><i class="fa fa-link"></i><span>${msg.security}</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
@@ -211,18 +224,9 @@
                     <section class="content container-fluid">
                         <!--Your Page Content Here -->
                         <ui:insert id="mainContents" name="mainContent"/>
-                        <p:blockUI id="globalBlock" widgetVar="globalBlock" block="body"/>
-                        <p:growl id="globalMessages"/>
-                        <h:form>
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="${msg.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                <p:commandButton value="${msg.no}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
-                        </h:form>
                     </section>
                     <!-- /.content -->
                 </div>
-                <!-- /.content-wrapper -->
                 <!-- Main Footer -->
                 <footer class="main-footer">
                     <!-- To the right -->
@@ -233,6 +237,15 @@
                     <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
                 </footer>
             </div>
+            <!--general accessories-->
+            <p:blockUI id="globalBlock" widgetVar="globalBlock" block="body"/>
+            <p:growl id="globalMessages"/>
+            <h:form>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="${msg.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                    <p:commandButton value="${msg.no}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                </p:confirmDialog>
+            </h:form>
             <h:outputScript name="/js/jquery.js"/>
             <h:outputScript name="/js/bootstrap.js"/>
             <h:outputScript name="/js/adminlte.js"/>
