@@ -4,7 +4,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
     <ui:define name="mainContent">
-        <h:form>
+        <h:form id="indexForm">
             <h:outputText value="${msg.hello}: ${request.userPrincipal.name}"/>
             <p:separator/>
         </h:form>
