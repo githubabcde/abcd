@@ -6,7 +6,7 @@
                 template="template.xhtml">
     <ui:define name="mainContent">
         <h:form>
-            <f:event type="preRenderComponent" listener="#{controller['prepareCreate']}"/>
+            <f:event type="preRenderView" listener="#{controller['prepareCreate']}"/>
             <p:link outcome="list" style="text-decoration: none" class="fa fa-arrow-up"/>
             <p:separator/>
             <ui:insert name="content"/>

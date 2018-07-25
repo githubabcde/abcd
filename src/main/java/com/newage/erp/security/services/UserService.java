@@ -18,6 +18,6 @@ public class UserService extends SuperCRUDService<SecurityUser> {
     }
 
     public SecurityUser findByUserNamePassword(String userName, String password) {
-        return dao.findOne("SecurityUser.findByUserNamePassword", SecurityUser.class, "userName", userName, "password", password);
+        return dataService.findOne("SecurityUser.findByUserNamePassword", SecurityUser.class, "userName", userName, "password", password);
     }
 }

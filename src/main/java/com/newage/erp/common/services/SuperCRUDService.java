@@ -2,6 +2,7 @@ package com.newage.erp.common.services;
 
 import com.newage.erp.common.entities.SuperEntity;
 import java.util.List;
+import javax.ejb.EJBAccessException;
 import javax.inject.Inject;
 
 /**
@@ -14,37 +15,47 @@ public class SuperCRUDService<T extends SuperEntity> {
     protected final Class<T> entityClass;
 
     @Inject
-    protected DAOService dao;
+    protected DataService dataService;
     @Inject
-    protected SecurityService ss;
+    protected SecurityService securityService;
 
     public SuperCRUDService(Class entityClass) {
         this.entityClass = entityClass;
     }
 
     public List<T> find() {
-        ss.applyPermission(entityClass.getSimpleName() + ".desplay");
-        return dao.find(entityClass);
+        if (!securityService.hasPermission(entityClass.getSimpleName() + ".desplay")) {
+            throw new EJBAccessException();
+        }
+        return dataService.find(entityClass);
     }
 
     public T find(Long id) {
-        ss.applyPermission(entityClass.getSimpleName() + ".desplay");
-        return dao.find(entityClass, id);
+        if (!securityService.hasPermission(entityClass.getSimpleName() + ".desplay")) {
+            throw new EJBAccessException();
+        }
+        return dataService.find(entityClass, id);
     }
 
     public void create(T entity) {
-        ss.applyPermission(entityClass.getSimpleName() + ".create");
-        dao.persist(entity);
+        if (!securityService.hasPermission(entityClass.getSimpleName() + ".create")) {
+            throw new EJBAccessException();
+        }
+        dataService.persist(entity);
     }
 
     public void update(T entity) {
-        ss.applyPermission(entityClass.getSimpleName() + ".update");
-        dao.merge(entity);
+        if (!securityService.hasPermission(entityClass.getSimpleName() + ".update")) {
+            throw new EJBAccessException();
+        }
+        dataService.merge(entity);
     }
 
     public void remove(T entity) {
-        ss.applyPermission(entityClass.getSimpleName() + ".remove");
-        dao.remove(entity);
+        if (!securityService.hasPermission(entityClass.getSimpleName() + ".remove")) {
+            throw new EJBAccessException();
+        }
+        dataService.remove(entity);
     }
 
     public Class<T> getEntityClass() {

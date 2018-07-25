@@ -16,7 +16,7 @@ import javax.persistence.criteria.Root;
  * @author mohammed
  */
 @Stateless
-public class DAOService {
+public class DataService {
 
     @PersistenceContext(unitName = "ERPPU")
     private EntityManager em;
@@ -35,22 +35,22 @@ public class DAOService {
         em.remove(em.merge(e));
     }
 
-    public <T> List<T> find(Class<T> clazz) {
+    public <T> List<T> find(Class<T> entityClass) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<T> cq = cb.createQuery(clazz);
-        Root<T> rootEntry = cq.from(clazz);
+        CriteriaQuery<T> cq = cb.createQuery(entityClass);
+        Root<T> rootEntry = cq.from(entityClass);
         CriteriaQuery<T> all = cq.select(rootEntry);
         TypedQuery<T> allQuery = em.createQuery(all);
         return allQuery.getResultList();
     }
 
-    public <T> T find(Class<T> clazz, Long id) {
-        return em.find(clazz, id);
+    public <T> T find(Class<T> entityClass, Long id) {
+        return em.find(entityClass, id);
     }
 
-    public <T> List<T> find(String namedQuery, Class<T> clazz, Object... params) {
+    public <T> List<T> find(String namedQuery, Class<T> entityClass, Object... params) {
         try {
-            TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, clazz);
+            TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, entityClass);
             for (int i = 0; i < params.length; i += 2) {
                 typedQuery.setParameter(params[i].toString(), params[i + 1]);
             }
@@ -60,9 +60,9 @@ public class DAOService {
         }
     }
     
-    public <T> T findOne(String namedQuery, Class<T> clazz, Object... params) {
+    public <T> T findOne(String namedQuery, Class<T> entityClass, Object... params) {
         try {
-            TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, clazz);
+            TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, entityClass);
             for (int i = 0; i < params.length; i += 2) {
                 typedQuery.setParameter(params[i].toString(), params[i + 1]);
             }
@@ -72,10 +72,10 @@ public class DAOService {
         }
     }
 
-    public Long getNewId(Class clazz) {
+    public Long getNewId(Class entityClass) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery cq = cb.createQuery(clazz);
-        Root root = cq.from(clazz);
+        CriteriaQuery cq = cb.createQuery(entityClass);
+        Root root = cq.from(entityClass);
         cq.select(cb.max(root.get("id")));
         TypedQuery q = em.createQuery(cq);
         Number maxId = ((Number) q.getSingleResult());

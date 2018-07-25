@@ -38,20 +38,20 @@
         </form-login-config>
     </login-config>
     <error-page>
-        <error-code>500</error-code>
-        <location>/error500.xhtml</location>
-    </error-page>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error404.xhtml</location>
+        <exception-type>javax.ejb.EJBAccessException</exception-type>
+        <location>/error403.xhtml</location>
     </error-page>
     <error-page>
         <error-code>403</error-code>
         <location>/error403.xhtml</location>
     </error-page>
     <error-page>
-        <exception-type>javax.ejb.EJBAccessException</exception-type>
-        <location>/error403.xhtml</location>
+        <error-code>404</error-code>
+        <location>/error404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error500.xhtml</location>
     </error-page>
     <security-constraint>
         <display-name>secured resources</display-name>
