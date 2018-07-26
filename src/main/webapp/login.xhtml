@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>${msg.newAgeErp}</title>
-        <meta charset="utf-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <h:outputStylesheet name="/css/bootstrap.css"/>
-        <h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}"/>
-        <h:outputStylesheet name="/css/AdminLTE.css"/>
-        <h:outputStylesheet name="/css/skins/skin-blue.css"/>
-        <h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}"/>
-        <h:outputScript name="/js/jquery.js"/>
-        <h:outputScript name="/js/bootstrap.js"/>
-        <h:outputScript name="/js/adminlte.js"/>
-    </h:head>
-    <h:body class="hold-transition login-page">
-        <div class="login-box">
-            <div class="login-logo">
-                <b>Admin</b>LTE
-            </div>
-            <div class="login-box-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-                <h:form>
-                    <div class="form-group has-feedback">
-                        <p:inputText id="userName" required="true" value="#{accountController.username}"  placeholder="#{msg.userName}" class="form-control"/>
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"/>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <p:password id="password" required="true" value="#{accountController.password}" placeholder="#{msg.password}" class="form-control"/>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"/>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p:commandLink value="#{msg.login}" action="#{accountController.login()}" ajax="false" class="btn btn-primary btn-block btn-flat"/>
-                        </div>
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                    <!--<p:checkbox/>-->
-                                    <h:outputText value="Remember Me"/>
-                            </div>
-                        </div>
-                    </div>
-                </h:form>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>${msg.newAgeErp}</title>
+	<meta charset="utf-8" />
+	<meta
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport" />
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<h:outputStylesheet name="/css/bootstrap.rtl.css"
+		rendered="#{view.locale.language eq 'ar'}" />
+	<h:outputStylesheet name="/css/AdminLTE.css" />
+	<h:outputStylesheet name="/css/AdminLTE.rtl.css"
+		rendered="#{view.locale.language eq 'ar'}" />
+	<h:outputScript name="/js/jquery.js" />
+	<h:outputScript name="/js/bootstrap.js" />
+	<h:outputScript name="/js/adminlte.js" />
+</h:head>
+<h:body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<b>Admin</b>LTE
+		</div>
+		<div class="login-box-body">
+			<p class="login-box-msg">Sign in to start your session</p>
+			<h:form>
+				<div class="form-group has-feedback">
+					<p:inputText id="userName" required="true"
+						value="#{accountController.username}"
+						placeholder="#{msg.userName}" class="form-control" />
+				</div>
+				<div class="form-group has-feedback">
+					<p:password id="password" required="true"
+						value="#{accountController.password}"
+						placeholder="#{msg.password}" class="form-control" />
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<p:commandLink value="#{msg.login}"
+							action="#{accountController.login()}" ajax="false"
+							class="btn btn-primary btn-block btn-flat" />
+					</div>
+				</div>
+			</h:form>
 
-                <a href="#">I forgot my password</a><br/>
+			<a href="#">I forgot my password</a><br />
 
-            </div>
-        </div>
-    </h:body>
+		</div>
+	</div>
+</h:body>
 </html>
