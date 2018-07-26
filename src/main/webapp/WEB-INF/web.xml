@@ -29,14 +29,6 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>file</realm-name>
-        <form-login-config>
-            <form-login-page>/login.xhtml</form-login-page>
-            <form-error-page>/login.xhtml</form-error-page>
-        </form-login-config>
-    </login-config>
     <error-page>
         <exception-type>javax.ejb.EJBAccessException</exception-type>
         <location>/error403.xhtml</location>
@@ -53,6 +45,14 @@
         <error-code>500</error-code>
         <location>/error500.xhtml</location>
     </error-page>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
     <security-constraint>
         <display-name>secured resources</display-name>
         <web-resource-collection>
