@@ -7,21 +7,17 @@
 <h:head>
 	<title>${msg.newAgeErp}</title>
 	<meta charset="utf-8" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<h:outputStylesheet name="/css/bootstrap.css" />
-	<h:outputStylesheet name="/css/bootstrap.rtl.css"
-		rendered="#{view.locale.language eq 'ar'}" />
+	<h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
 	<h:outputStylesheet name="/css/AdminLTE.css" />
 	<h:outputStylesheet name="/css/skins/skin-blue.css" />
-	<h:outputStylesheet name="/css/AdminLTE.rtl.css"
-		rendered="#{view.locale.language eq 'ar'}" />
+	<h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
 	<h:outputScript name="/js/bootstrap.js" />
 	<h:outputScript name="/js/adminlte.js" />
 </h:head>
 <h:body id="body" class="hold-transition skin-blue sidebar-mini">
-	<f:view
-		locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
+	<f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
 		<div class="wrapper">
 			<ui:include src="header.xhtml" />
 			<ui:include src="sideBar.xhtml" />
@@ -30,15 +26,12 @@
 					<ui:insert id="mainContents" name="mainContent" />
 				</section>
 			</div>
-			<ui:include src="footer.xhtml" />
 			<p:blockUI id="globalBlock" widgetVar="globalBlock" block="body" />
 			<p:growl id="globalMessages" />
 			<h:form id="confarmForm">
 				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-					<p:commandButton value="${msg.yes}" type="button"
-						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-					<p:commandButton value="${msg.no}" type="button"
-						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					<p:commandButton value="${msg.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="${msg.no}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 				</p:confirmDialog>
 			</h:form>
 		</div>
