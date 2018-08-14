@@ -48,15 +48,15 @@
                                 <i class="fa fa-language" style="margin: 13px;"/>
                             </p:commandLink>
                             <p:menu overlay="true" trigger="languages" my="left top" at="left bottom">
-                                <p:menuitem value="عربي" actionListener="#{accountController.changeLanguage('ar')}" ajax="false"/>
+                                <p:menuitem value="عربي" actionListener="#{securityController.changeLanguage('ar')}" ajax="false"/>
                                 <p:separator/>
-                                <p:menuitem value="English" actionListener="#{accountController.changeLanguage('en')}" ajax="false"/>
+                                <p:menuitem value="English" actionListener="#{securityController.changeLanguage('en')}" ajax="false"/>
                             </p:menu>
                             <p:commandLink id="profile" style="font-size: 24px; color: white;text-decoration: none">
                                 <i class="fa fa-user-circle" style="margin: 13px;"/>
                             </p:commandLink>
                             <p:menu overlay="true" trigger="profile" my="left top" at="left bottom">
-                                <p:menuitem value="#{msg.logout}" actionListener="#{accountController.logout()}" action="/index.xhtml/?faces-redirect=true"/>
+                                <p:menuitem value="#{msg.logout}" actionListener="#{securityController.logout()}" action="/index.xhtml/?faces-redirect=true"/>
                             </p:menu>
                         </h:form>
                     </div>

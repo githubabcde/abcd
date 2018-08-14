@@ -19,7 +19,7 @@ public class SuperCRUDService<T extends SuperEntity> {
     @Inject
     protected SecurityService securityService;
 
-    public SuperCRUDService(Class entityClass) {
+    public SuperCRUDService(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 

@@ -20,7 +20,8 @@ import static com.newage.erp.common.controllers.utli.Helper.addFacesMessage;
  */
 public class SuperCRUDController<T extends SuperEntity> implements Serializable {
 
-    protected T item;
+	private static final long serialVersionUID = 1L;
+	protected T item;
     protected List<T> items;
 
     protected SuperCRUDService<T> supperCRUDService;

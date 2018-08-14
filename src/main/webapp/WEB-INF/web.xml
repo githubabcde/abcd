@@ -12,6 +12,7 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>omega</param-value>
     </context-param>
+    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -21,11 +22,13 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
@@ -45,6 +48,7 @@
         <error-code>500</error-code>
         <location>/error500.xhtml</location>
     </error-page>
+    
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>file</realm-name>
@@ -79,4 +83,29 @@
         <description>All Users</description>
         <role-name>login</role-name>
     </security-role>
+    
+    <mime-mapping>
+    	<extension>otf</extension>  
+    	<mime-type>font/opentype</mime-type>  
+    </mime-mapping>
+    <mime-mapping>
+		<extension>ttf</extension>
+		<mime-type>application/x-font-ttf</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>woff</extension>
+		<mime-type>application/x-font-woff</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>woff2</extension>
+		<mime-type>application/x-font-woff2</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>eot</extension>
+		<mime-type>application/x-font-eot</mime-type>
+	</mime-mapping>
+    <mime-mapping>  
+    	<extension>svg</extension>  
+    	<mime-type>image/svg+xml</mime-type>  
+    </mime-mapping>
 </web-app>

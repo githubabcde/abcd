@@ -13,45 +13,47 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class SuperEntity implements Serializable {
 
-    @Id
-    @Column(name = "ID")
-    protected Long id;
+	private static final long serialVersionUID = 1L;
 
-    public SuperEntity() {
-    }
+	@Id
+	@Column(name = "ID")
+	protected Long id;
 
-    public SuperEntity(Long id) {
-        this.id = id;
-    }
+	public SuperEntity() {
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public SuperEntity(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    @Override
-    public String toString() {
-        return "Entity{" + "id=" + id + '}';
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
+	@Override
+	public String toString() {
+		return "Entity{" + "id=" + id + '}';
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        return Objects.equals(this.id, ((SuperEntity) obj).id);
-    }
+	@Override
+	public int hashCode() {
+		int hash = 7;
+		hash = 23 * hash + Objects.hashCode(this.id);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		return Objects.equals(this.id, ((SuperEntity) obj).id);
+	}
 }

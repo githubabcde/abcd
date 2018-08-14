@@ -10,10 +10,10 @@
             <div style="margin-left: auto; margin-right: auto; margin-top: 10%; width: 300px;">
                 <i id="menu" style="color: white;font-size:70px;width: 100%;text-align: center;" class="fa fa-user-circle"/>
                 <p/>
-                <p:inputText id="userName" required="true" value="#{accountController.username}"  placeholder="#{msg.userName}" style="width: 290px; height: 30px; margin-bottom: 1px"/>
-                <p:password id="password" required="true" value="#{accountController.password}" placeholder="#{msg.password}" style="width: 290px; height: 30px"/>
+                <p:inputText id="userName" required="true" value="#{securityController.username}"  placeholder="#{msg.userName}" style="width: 290px; height: 30px; margin-bottom: 1px"/>
+                <p:password id="password" required="true" value="#{securityController.password}" placeholder="#{msg.password}" style="width: 290px; height: 30px"/>
                 <p/>
-                <p:commandButton value="#{msg.login}" style="height: 40px; width: 300px; background: yellow;color: #448ed3" action="#{accountController.login()}" ajax="false"/>
+                <p:commandButton value="#{msg.login}" style="height: 40px; width: 300px; background: yellow;color: #448ed3" action="#{securityController.login()}" ajax="false"/>
             </div>
         </h:form>
     </h:body>

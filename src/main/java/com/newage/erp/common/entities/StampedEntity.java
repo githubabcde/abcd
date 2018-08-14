@@ -18,55 +18,57 @@ import javax.persistence.TemporalType;
 @EntityListeners(EntityListener.class)
 public class StampedEntity extends SuperEntity {
 
-    @Column(name = "CREATE_TIME", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    protected Date createTime;
-    @Column(name = "UPDATE_TIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    protected Date updateTime;
-    @JoinColumn(name = "CREATE_USER", nullable = false)
-    @ManyToOne
-    protected SecurityUser createUser;
-    @JoinColumn(name = "UPDATE_USER")
-    @ManyToOne
-    protected SecurityUser updateUser;
+	private static final long serialVersionUID = 1L;
 
-    public StampedEntity() {
-    }
+	@Column(name = "CREATE_TIME", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date createTime;
+	@Column(name = "UPDATE_TIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date updateTime;
+	@JoinColumn(name = "CREATE_USER", nullable = false)
+	@ManyToOne
+	protected SecurityUser createUser;
+	@JoinColumn(name = "UPDATE_USER")
+	@ManyToOne
+	protected SecurityUser updateUser;
 
-    public StampedEntity(Long id) {
-        super(id);
-    }
+	public StampedEntity() {
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public StampedEntity(Long id) {
+		super(id);
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
 
-    public SecurityUser getCreateUser() {
-        return createUser;
-    }
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
-    public void setCreateUser(SecurityUser createUser) {
-        this.createUser = createUser;
-    }
+	public SecurityUser getCreateUser() {
+		return createUser;
+	}
 
-    public SecurityUser getUpdateUser() {
-        return updateUser;
-    }
+	public void setCreateUser(SecurityUser createUser) {
+		this.createUser = createUser;
+	}
 
-    public void setUpdateUser(SecurityUser updateUser) {
-        this.updateUser = updateUser;
-    }
+	public SecurityUser getUpdateUser() {
+		return updateUser;
+	}
+
+	public void setUpdateUser(SecurityUser updateUser) {
+		this.updateUser = updateUser;
+	}
 }

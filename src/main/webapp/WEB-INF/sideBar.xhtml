@@ -28,6 +28,20 @@
 						</li>
 					</ul>
 				</li>
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-cogs"/>
+						<span>#{msg.accounting}</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"/>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><h:link value="#{msg.currencies}" outcome="/accounting/currency/list"/></li>
+						<li><h:link value="#{msg.accounts}" outcome="/accounting/account/list"/></li>
+						<li><h:link value="#{msg.transactions}" outcome="/accounting/transaction/list"/></li>
+					</ul>
+				</li>
 			</ul>
 		</section>
 	</aside>

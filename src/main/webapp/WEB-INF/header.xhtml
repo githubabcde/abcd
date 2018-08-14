@@ -90,10 +90,10 @@
                                 <li>
                                     <ul class="menu">
                                         <li>
-                                            <h:commandLink value="عربي" action="#{accountController.changeLanguage('ar')}"/>
+                                            <h:commandLink value="عربي" action="#{securityController.changeLanguage('ar')}"/>
                                         </li>
                                         <li>
-                                            <h:commandLink value="English" action="#{accountController.changeLanguage('en')}"/>
+                                            <h:commandLink value="English" action="#{securityController.changeLanguage('en')}"/>
                                         </li>
                                     </ul>
                                 </li>
@@ -135,7 +135,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <p:commandLink value="#{msg.logout}" actionListener="#{accountController.logout}" action="/index.xhtml/?faces-redirect=true" class="btn btn-default btn-flat"/>
+                                        <p:commandLink value="#{msg.logout}" actionListener="#{securityController.logout}" action="/index.xhtml/?faces-redirect=true" class="btn btn-default btn-flat"/>
                                     </div>
                                 </li>
                             </ul>

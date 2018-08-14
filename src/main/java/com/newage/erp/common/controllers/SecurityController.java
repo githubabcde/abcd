@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 
 @CustomFormAuthenticationMechanismDefinition(loginToContinue = @LoginToContinue(loginPage = "/login.xhtml", errorPage = "/login.xhtml"))
-@Named(value = "accountController")
+@Named(value = "securityController")
 @RequestScoped
-public class AccountController {
+public class SecurityController {
 
     @NotNull
     private String username;

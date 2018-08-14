@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templateList.xhtml">
+    <ui:param name="controller" value="#{currencyController}"/>
+    <ui:define name="content">
+        <p:dataTable value="#{currencyController.items}" var="item" rows="10" paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+            <p:column headerText="#{msg.name}" filterBy="#{item.name}" sortBy="#{item.name}">
+                <p:link value="#{item.name}" outcome="update?faces-redirect=true">
+                    <f:param name="id" value="#{item.id}"/>
+                </p:link>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
