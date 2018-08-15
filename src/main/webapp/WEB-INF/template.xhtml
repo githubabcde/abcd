@@ -4,20 +4,20 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>${msg.newAgeErp}</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<h:outputStylesheet name="/css/bootstrap.css" />
-	<h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
-	<h:outputStylesheet name="/css/AdminLTE.css" />
-	<h:outputStylesheet name="/css/skins/skin-blue.css" />
-	<h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
-	<h:outputScript name="/js/bootstrap.js" />
-	<h:outputScript name="/js/adminlte.js" />
-</h:head>
-<h:body id="body" class="hold-transition skin-blue sidebar-mini">
-	<f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
+<f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
+	<h:head>
+		<title>${msg.newAgeErp}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<h:outputStylesheet name="/css/bootstrap.css" />
+		<h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
+		<h:outputStylesheet name="/css/AdminLTE.css" />
+		<h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
+		<h:outputStylesheet name="/css/skins/skin-blue.css" />
+		<h:outputScript name="/js/bootstrap.js" />
+		<h:outputScript name="/js/adminlte.js" />
+	</h:head>
+	<h:body id="body" class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
 			<ui:include src="header.xhtml" />
 			<ui:include src="sideBar.xhtml" />
@@ -35,6 +35,6 @@
 				</p:confirmDialog>
 			</h:form>
 		</div>
-	</f:view>
-</h:body>
+	</h:body>
+</f:view>
 </html>

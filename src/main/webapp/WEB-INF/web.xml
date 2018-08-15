@@ -49,20 +49,21 @@
         <location>/error500.xhtml</location>
     </error-page>
     
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>file</realm-name>
-        <form-login-config>
-            <form-login-page>/login.xhtml</form-login-page>
-            <form-error-page>/login.xhtml</form-error-page>
-        </form-login-config>
-    </login-config>
+<!--     <login-config> -->
+<!--         <auth-method>FORM</auth-method> -->
+<!--         <realm-name>file</realm-name> -->
+<!--         <form-login-config> -->
+<!--             <form-login-page>/login.xhtml</form-login-page> -->
+<!--             <form-error-page>/login.xhtml</form-error-page> -->
+<!--         </form-login-config> -->
+<!--     </login-config> -->
     <security-constraint>
         <display-name>secured resources</display-name>
         <web-resource-collection>
             <web-resource-name>secured</web-resource-name>
             <description/>
             <url-pattern>/security/*</url-pattern>
+            <url-pattern>/accounting/*</url-pattern>
             <url-pattern>/index.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
@@ -70,15 +71,15 @@
             <role-name>login</role-name>
         </auth-constraint>
     </security-constraint>
-    <security-constraint>
-	    <web-resource-collection>
-	        <web-resource-name>https</web-resource-name>
-	        <url-pattern>/*</url-pattern>
-	    </web-resource-collection>
-	    <user-data-constraint>
-	        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-	    </user-data-constraint>
-    </security-constraint>
+<!--     <security-constraint> -->
+<!-- 	    <web-resource-collection> -->
+<!-- 	        <web-resource-name>https</web-resource-name> -->
+<!-- 	        <url-pattern>/*</url-pattern> -->
+<!-- 	    </web-resource-collection> -->
+<!-- 	    <user-data-constraint> -->
+<!-- 	        <transport-guarantee>CONFIDENTIAL</transport-guarantee> -->
+<!-- 	    </user-data-constraint> -->
+<!--     </security-constraint> -->
     <security-role>
         <description>All Users</description>
         <role-name>login</role-name>

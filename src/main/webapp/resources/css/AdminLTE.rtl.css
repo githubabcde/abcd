@@ -5,14 +5,6 @@
  *  Company : IT4DS Co.
  *  website : www.it4ds.com.eg 
  */
- /*@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);*/
-@font-face {
-    font-family: 'Conv_GESSTwoLight';
-    src: url('../font/GESSTwoLight.eot');
-    src: local('?'), url('../font/GESSTwoLight.woff') format('woff'), url('../font/GESSTwoLight.ttf') format('truetype'), url('../font/GESSTwoLight.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 html,
 body {
     /*direction: rtl;*/

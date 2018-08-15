@@ -6,26 +6,15 @@
 			<ul class="sidebar-menu" data-widget="tree">
 				<li class="treeview">
 					<a href="#">
-						<i class="fa fa-cogs"/>
-						<span>#{msg.settings}</span>
+						<i class="fa fa-lock"/>
+						<span>#{msg.security}</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"/>
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-lock"/>
-								<span>#{msg.security}</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"/>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><h:link value="#{msg.users}" outcome="/security/user/list"/></li>
-								<li><h:link value="#{msg.groups}" outcome="/security/group/list"/></li>
-							</ul>
-						</li>
+						<li><h:link value="#{msg.users}" outcome="/security/user/list"/></li>
+						<li><h:link value="#{msg.groups}" outcome="/security/group/list"/></li>
 					</ul>
 				</li>
 				<li class="treeview">
