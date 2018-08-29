@@ -73,13 +73,13 @@ public class DataService {
         }
     }
 
-    public Long getNewId(Class entityClass) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery cq = cb.createQuery(entityClass);
-        Root root = cq.from(entityClass);
-        cq.select(cb.max(root.get("id")));
-        TypedQuery q = em.createQuery(cq);
-        Number maxId = ((Number) q.getSingleResult());
+    public Long getNewId(Class<? extends SuperEntity> entityClass) {
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Number> criteriaQuery = criteriaBuilder.createQuery(Number.class);
+        Root<? extends SuperEntity> root = criteriaQuery.from(entityClass);
+        criteriaQuery.select(criteriaBuilder.max(root.get("id")));
+        TypedQuery<Number> typedQuery = em.createQuery(criteriaQuery);
+        Number maxId = typedQuery.getSingleResult();
         return Objects.isNull(maxId) ? 1l : maxId.longValue() + 1l;
     }
 }

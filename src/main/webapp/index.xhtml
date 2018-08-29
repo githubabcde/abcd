@@ -26,7 +26,10 @@
 					<ui:include src="#{paginationController.currentContent}"/>
 				</section>
 			</h:panelGroup>
-			<p:blockUI id="globalBlock" widgetVar="globalBlock" block="body" />
+			<p:blockUI id="globalBlock" widgetVar="globalBlock" block="body">
+				<i class="fa fa-spinner"/>
+				<h:outputText value=" #{msg.processing} ..." />
+			</p:blockUI>
 			<p:growl id="globalMessages"/>
 			<h:form id="confarmForm">
 				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
