@@ -24,7 +24,7 @@ public class TransactionDetail extends StampedNamedEntity {
 	private Integer type;
 	@ManyToOne
 	@JoinColumn(name = "TRANSACTION")
-	private Transaction transaction; 
+	private Transaction transaction;
 	@ManyToOne
 	@JoinColumn(name = "ACCOUNT")
 	private Account account;

@@ -21,9 +21,7 @@ public class Transaction extends StampedNamedEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "TRANSACTION_TIME")
-	private Date TransactionTime;
-	@Column(name = "AMOUNT")
-	private Double amount;
+	private Date transactionTime;
 	@Column(name = "TYPE")
 	private Integer type;
 	@ManyToOne
@@ -38,19 +36,11 @@ public class Transaction extends StampedNamedEntity {
 	}
 
 	public Date getTransactionTime() {
-		return TransactionTime;
+		return transactionTime;
 	}
 
 	public void setTransactionTime(Date transactionTime) {
-		TransactionTime = transactionTime;
-	}
-
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
+		this.transactionTime = transactionTime;
 	}
 
 	public Integer getType() {

@@ -13,11 +13,11 @@
 	<p:outputLabel for="#{cc.attrs.id}" value="#{cc.attrs.lable}"
 		style="display: block" />
 	<p:selectOneMenu id="#{cc.attrs.id}" value="#{cc.attrs.value}"
-		required="#{cc.attrs.required}" converter="selectItemsConverter"
-		style="display: block">
+		filter="true" filterMatchMode="contains" style="display: block"
+		required="#{cc.attrs.required}" converter="selectItemsConverter">
 		<f:selectItem itemLabel="#{cc.attrs.lable}" itemValue="#{null}" />
-		<f:selectItems value="#{cc.attrs.items}" var="v"
-			itemLabel="#{v.name}" itemValue="#{v}" />
+		<f:selectItems value="#{cc.attrs.items}" var="v" itemLabel="#{v.name}"
+			itemValue="#{v}" />
 	</p:selectOneMenu>
 </cc:implementation>
 </html>

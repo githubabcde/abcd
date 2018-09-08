@@ -1,14 +1,11 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="/WEB-INF/templateCRUD.xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp">
+    xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp"
+    template="/WEB-INF/templateCRUD.xhtml">
 	<ui:param name="controller" value="#{accountController}"/>
 	<ui:define name="formContent">
         <my:inputText id="code" lable="${msg.code}" value="#{accountController.item.code}" required="true" />
-        <p:selectBooleanCheckbox id="active" value="#{accountController.item.active}" itemLabel="#{msg.active}" />
+        <my:selectBooleanCheckbox id="active" value="#{accountController.item.active}" lable="#{msg.active}" />
         <my:selectOneMenu id="parint" lable="${msg.parint}" value="#{accountController.item.parint}" items="#{accountController.parints}"/>
         <my:selectOneMenu id="currency" lable="${msg.currency}" value="#{accountController.item.currency}" items="#{accountController.currencies}"/>
 	</ui:define>
