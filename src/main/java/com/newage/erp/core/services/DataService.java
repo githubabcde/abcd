@@ -1,7 +1,6 @@
 package com.newage.erp.core.services;
 
 import java.util.List;
-import java.util.Objects;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,7 +22,7 @@ public class DataService {
     private EntityManager em;
 
     public void persist(SuperEntity e) {
-        e.setId(getNewId(e.getClass()));
+        //e.setId(getNewId(e.getClass()));
         em.persist(e);
 
     }
@@ -73,13 +72,13 @@ public class DataService {
         }
     }
 
-    public Long getNewId(Class<? extends SuperEntity> entityClass) {
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<Number> criteriaQuery = criteriaBuilder.createQuery(Number.class);
-        Root<? extends SuperEntity> root = criteriaQuery.from(entityClass);
-        criteriaQuery.select(criteriaBuilder.max(root.get("id")));
-        TypedQuery<Number> typedQuery = em.createQuery(criteriaQuery);
-        Number maxId = typedQuery.getSingleResult();
-        return Objects.isNull(maxId) ? 1l : maxId.longValue() + 1l;
-    }
+//    public Long getNewId(Class<? extends SuperEntity> entityClass) {
+//        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+//        CriteriaQuery<Number> criteriaQuery = criteriaBuilder.createQuery(Number.class);
+//        Root<? extends SuperEntity> root = criteriaQuery.from(entityClass);
+//        criteriaQuery.select(criteriaBuilder.max(root.get("id")));
+//        TypedQuery<Number> typedQuery = em.createQuery(criteriaQuery);
+//        Number maxId = typedQuery.getSingleResult();
+//        return Objects.isNull(maxId) ? 1l : maxId.longValue() + 1l;
+//    }
 }

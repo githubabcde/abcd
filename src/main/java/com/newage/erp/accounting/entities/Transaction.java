@@ -1,11 +1,13 @@
 package com.newage.erp.accounting.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.newage.erp.core.entities.StampedNamedEntity;
@@ -27,6 +29,8 @@ public class Transaction extends StampedNamedEntity {
 	@ManyToOne
 	@JoinColumn(name = "CURRENCY")
 	private Currency currency;
+	@OneToMany(mappedBy = "transaction")
+	private List<TransactionDetail> transactionDetailList;
 
 	public Transaction() {
 	}
@@ -50,12 +54,20 @@ public class Transaction extends StampedNamedEntity {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	
+
 	public Currency getCurrency() {
 		return currency;
 	}
 
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
+	}
+
+	public List<TransactionDetail> getTransactionDetailList() {
+		return transactionDetailList;
+	}
+
+	public void setTransactionDetailList(List<TransactionDetail> transactionDetailList) {
+		this.transactionDetailList = transactionDetailList;
 	}
 }

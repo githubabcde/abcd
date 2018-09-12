@@ -18,8 +18,10 @@ public class TransactionDetail extends StampedNamedEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "AMOUNT")
-	private Double amount;
+	@Column(name = "DEBIT_AMOUNT")
+	private Double debitAmount;
+	@Column(name = "CREDIT_AMOUNT")
+	private Double creditAmount;
 	@Column(name = "TYPE")
 	private Integer type;
 	@ManyToOne
@@ -36,12 +38,20 @@ public class TransactionDetail extends StampedNamedEntity {
 		super(id);
 	}
 
-	public Double getAmount() {
-		return amount;
+	public Double getDebitAmount() {
+		return debitAmount;
 	}
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
+	public void setDebitAmount(Double debitAmount) {
+		this.debitAmount = debitAmount;
+	}
+
+	public Double getCreditAmount() {
+		return creditAmount;
+	}
+
+	public void setCreditAmount(Double creditAmount) {
+		this.creditAmount = creditAmount;
 	}
 
 	public Integer getType() {

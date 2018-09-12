@@ -3,6 +3,8 @@ package com.newage.erp.core.entities;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -17,6 +19,7 @@ public class SuperEntity implements Serializable {
 
 	@Id
 	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
 	public SuperEntity() {
@@ -36,7 +39,7 @@ public class SuperEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Entity{" + "id=" + id + '}';
+		return getClass().getSimpleName()+"{" + "id=" + id + '}';
 	}
 
 	@Override
