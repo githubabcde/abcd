@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import com.newage.erp.core.entities.SuperEntity;
+import java.util.Objects;
 
 /**
  *
@@ -59,7 +60,7 @@ public class DataService {
             return null;
         }
     }
-    
+
     public <T> T findOne(String namedQuery, Class<T> entityClass, Object... params) {
         try {
             TypedQuery<T> typedQuery = em.createNamedQuery(namedQuery, entityClass);
@@ -72,13 +73,13 @@ public class DataService {
         }
     }
 
-//    public Long getNewId(Class<? extends SuperEntity> entityClass) {
-//        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-//        CriteriaQuery<Number> criteriaQuery = criteriaBuilder.createQuery(Number.class);
-//        Root<? extends SuperEntity> root = criteriaQuery.from(entityClass);
-//        criteriaQuery.select(criteriaBuilder.max(root.get("id")));
-//        TypedQuery<Number> typedQuery = em.createQuery(criteriaQuery);
-//        Number maxId = typedQuery.getSingleResult();
-//        return Objects.isNull(maxId) ? 1l : maxId.longValue() + 1l;
-//    }
+    public Long getNewId(Class<? extends SuperEntity> entityClass) {
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Number> criteriaQuery = criteriaBuilder.createQuery(Number.class);
+        Root<? extends SuperEntity> root = criteriaQuery.from(entityClass);
+        criteriaQuery.select(criteriaBuilder.max(root.get("id")));
+        TypedQuery<Number> typedQuery = em.createQuery(criteriaQuery);
+        Number maxId = typedQuery.getSingleResult();
+        return Objects.isNull(maxId) ? 1l : maxId.longValue() + 1l;
+    }
 }

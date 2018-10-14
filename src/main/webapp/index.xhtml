@@ -1,144 +1,104 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:my="http://xmlns.jcp.org/jsf/composite/myComp"
-	xmlns:p="http://primefaces.org/ui">
-<f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
-	<h:head>
-		<title>${msg.newAgeErp}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<h:outputStylesheet name="/css/bootstrap.css" />
-		<h:outputStylesheet name="/css/bootstrap.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
-		<h:outputStylesheet name="/css/AdminLTE.css" />
-		<h:outputStylesheet name="/css/AdminLTE.rtl.css" rendered="#{view.locale.language eq 'ar'}" />
-		<h:outputStylesheet name="/css/skin-blue.css" />
-		<h:outputScript name="/js/bootstrap.js" />
-		<h:outputScript name="/js/adminlte.js" />
-	</h:head>
-	<h:body id="body" class="hold-transition skin-blue sidebar-mini">
-		<div class="wrapper">
-			<header class="main-header">
-				<h:form>
-					<p:commandLink class="logo" update="mainContents" actionListener="#{paginationController.goTo('/indexContents.xhtml')}" onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()">
-						<span class="logo-mini"><b>N</b>A</span>
-						<span class="logo-lg"><b>New</b>AGE</span>
-					</p:commandLink>
-					<!-- Header Navbar -->
-					<nav class="navbar navbar-static-top" role="navigation">
-						<!-- Sidebar toggle button-->
-						<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-							<span class="sr-only">Toggle navigation</span>
-						</a>
-						<!-- Navbar Right Menu -->
-						<div class="navbar-custom-menu">
-							<ul class="nav navbar-nav">
-								<!-- Languages -->
-								<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-language"></i>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<ul class="menu">
-											<li><h:commandLink value="عربي" actionListener="#{securityController.changeLanguage('ar')}" /></li>
-											<li><h:commandLink value="English" actionListener="#{securityController.changeLanguage('en')}" /></li>
-										</ul>
-									</li>
-								</ul>
-								</li>
-								<!-- User Account Menu -->
-								<li class="dropdown user user-menu">
-									<!-- Menu Toggle Button -->
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user-o" />
-								</a>
-									<ul class="dropdown-menu">
-										<!-- The user image in the menu -->
-										<li class="user-header">
-											<p>${request.userPrincipal.name} <small>Member since Nov. 2012</small></p>
-										</li>
-										<!-- Menu Body -->
-										<li class="user-body">
-											<div class="row">
-												<div class="col-xs-4 text-center">
-													<a href="#">Followers</a>
-												</div>
-												<div class="col-xs-4 text-center">
-													<a href="#">Sales</a>
-												</div>
-												<div class="col-xs-4 text-center">
-													<a href="#">Friends</a>
-												</div>
-											</div> <!-- /.row -->
-										</li>
-										<!-- Menu Footer-->
-										<li class="user-footer">
-											<div class="pull-left">
-												<a href="#" class="btn btn-default btn-flat">Profile</a>
-											</div>
-											<div class="pull-right">
-												<p:commandLink value="#{msg.logout}" actionListener="#{securityController.logout}" action="/index.xhtml/?faces-redirect=true" class="btn btn-default btn-flat" />
-											</div>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</h:form>
-			</header>
-			<aside class="main-sidebar">
-				<section class="sidebar">
-					<h:form>
-						<ul class="sidebar-menu" data-widget="tree">
-							<li class="treeview"><a href="#"> <i class="fa fa-lock" />
-									<span>#{msg.security}</span> <span class="pull-right-container">
-										<i class="fa fa-angle-left pull-right" />
-								</span>
-							</a>
-								<ul class="treeview-menu">
-									<li><my:goTo lable="#{msg.users}"
-											to="/WEB-INF/security/user.xhtml" /></li>
-									<li><my:goTo lable="#{msg.groups}"
-											to="/WEB-INF/security/group.xhtml" /></li>
-								</ul></li>
-							<li class="treeview"><a href="#"> <i class="fa fa-cogs" />
-									<span>#{msg.accounting}</span> <span
-									class="pull-right-container"> <i
-										class="fa fa-angle-left pull-right" />
-								</span>
-							</a>
-								<ul class="treeview-menu">
-									<li><my:goTo lable="#{msg.currencies}"
-											to="/WEB-INF/accounting/currency.xhtml" /></li>
-									<li><my:goTo lable="#{msg.accounts}"
-											to="/WEB-INF/accounting/account.xhtml" /></li>
-									<li><my:goTo lable="#{msg.transactions}"
-											to="/WEB-INF/accounting/transaction.xhtml" /></li>
-								</ul></li>
-						</ul>
-					</h:form>
-				</section>
-			</aside>
-			<h:panelGroup id="mainContents" layout="block" styleClass="content-wrapper">
-				<section class="content container-fluid">
-					<ui:include src="#{paginationController.currentContent}" />
-				</section>
-			</h:panelGroup>
-			<p:blockUI id="globalBlock" widgetVar="globalBlock" block="body">
-				<i class="fa fa-spinner" />
-				<h:outputText value=" #{msg.processing} ..." />
-			</p:blockUI>
-			<p:growl id="globalMessages" />
-			<h:form id="confarmForm">
-				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-					<p:commandButton value="${msg.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-					<p:commandButton value="${msg.no}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-				</p:confirmDialog>
-			</h:form>
-		</div>
-	</h:body>
-</f:view>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{not empty session.getAttribute('language')? session.getAttribute('language') : 'ar'}">
+        <h:head>
+            <title>#{msg.newAgeErp}</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+            <style>
+                #mySidenav {
+                    height: 100%;
+                    width: 0px;
+                    position: fixed;
+                    overflow-x: hidden;
+                    background-color: white;
+                }
+                #top {
+                    height: 50px;
+                    background-color: #448ed3;
+                }
+            </style>
+        </h:head>
+        <h:body id="body" dir="#{view.locale.language eq 'ar'? 'rtl' : 'ltr' }" style="margin: 0;">
+            <div id="top">
+                <div style="float: #{view.locale.language eq 'ar'? 'right' : 'left'}">
+                    <i id="menu" style="color: white;font-size:24px;cursor:pointer;margin: 13px;" class="fa fa-navicon" onclick="openNav()"/>
+                </div>
+                <div style="float: #{view.locale.language eq 'ar'? 'left' : 'right'}">
+                    <h:form>
+                        <p:commandLink id="languages" style="font-size: 24px; color: white;text-decoration: none">
+                            <i class="fa fa-language" style="margin: 13px;"/>
+                        </p:commandLink>
+                        <p:menu overlay="true" trigger="languages" my="left top" at="left bottom">
+                            <p:menuitem value="عربي" actionListener="#{securityController.changeLanguage('ar')}" ajax="false"/>
+                            <p:separator/>
+                            <p:menuitem value="English" actionListener="#{securityController.changeLanguage('en')}" ajax="false"/>
+                        </p:menu>
+                        <p:commandLink id="profile" style="font-size: 24px; color: white;text-decoration: none">
+                            <i class="fa fa-user-circle" style="margin: 13px;"/>
+                        </p:commandLink>
+                        <p:menu overlay="true" trigger="profile" my="left top" at="left bottom">
+                            <p:menuitem value="#{msg.logout}" actionListener="#{securityController.logout()}" action="/index.xhtml/?faces-redirect=true"/>
+                        </p:menu>
+                    </h:form>
+                </div>
+            </div>
+            <div id="mySidenav">
+                <h:form>
+                    <p:panelMenu>
+                        <p:submenu label="${msg.security}">
+                            <p:menuitem value="#{msg.users}" update="mainContents"
+                                        actionListener="#{paginationController.goTo('/WEB-INF/security/user.xhtml')}"
+                                        onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()" />
+                            <p:menuitem value="#{msg.groups}" update="mainContents"
+                                        actionListener="#{paginationController.goTo('/WEB-INF/security/group.xhtml')}"
+                                        onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()" />
+                        </p:submenu>
+                        <p:submenu label="${msg.accounting}">
+                            <p:menuitem value="#{msg.currencies}" update="mainContents"
+                                        actionListener="#{paginationController.goTo('/WEB-INF/accounting/currency.xhtml')}"
+                                        onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()" />
+                            <p:menuitem value="#{msg.accounts}" update="mainContents"
+                                        actionListener="#{paginationController.goTo('/WEB-INF/accounting/account.xhtml')}"
+                                        onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()" />
+                            <p:menuitem value="#{msg.transactions}" update="mainContents"
+                                        actionListener="#{paginationController.goTo('/WEB-INF/accounting/transaction.xhtml')}"
+                                        onstart="PF('globalBlock').show()" oncomplete="PF('globalBlock').hide()" />
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </div>
+            <div id="content">
+                <h:panelGroup id="mainContents" layout="block" style="padding: 10px;">
+                    <ui:include src="#{paginationController.currentContent}" />
+                </h:panelGroup>
+            </div>
+            <p:blockUI id="globalBlock" widgetVar="globalBlock" block="body">
+                <i class="fa fa-spinner" />
+                <h:outputText value=" #{msg.processing} ..." />
+            </p:blockUI>
+            <p:growl id="globalMessages" />
+            <h:form id="confarmForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="${msg.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                    <p:commandButton value="${msg.no}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                </p:confirmDialog>
+            </h:form>
+            <script>
+                function openNav() {
+                    if (document.getElementById("mySidenav").style.width !== "300px") {
+                        document.getElementById("mySidenav").style.width = "300px";
+                        document.getElementById("content").style.#{view.locale.language eq 'ar'?'marginRight':'marginLeft'} = "300px";
+                    } else {
+                        document.getElementById("mySidenav").style.width = "0px";
+                        document.getElementById("content").style.margin = "0px";
+                    }
+                }
+            </script>
+        </h:body>
+    </f:view>
 </html>

@@ -2,7 +2,6 @@ package com.newage.erp.security.services;
 
 import com.newage.erp.core.services.SuperCRUDService;
 import com.newage.erp.security.entities.SecurityUser;
-import javax.annotation.security.DeclareRoles;
 import javax.ejb.Stateless;
 
 /**
@@ -10,7 +9,6 @@ import javax.ejb.Stateless;
  * @author mohammed
  */
 @Stateless
-@DeclareRoles({"SecurityUser.create", "SecurityUser.remove", "SecurityUser.update", "SecurityUser.desplay"})
 public class UserService extends SuperCRUDService<SecurityUser> {
 
     public UserService() {

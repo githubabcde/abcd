@@ -19,13 +19,14 @@ import com.newage.erp.core.services.SuperCRUDService;
 /**
  *
  * @author mohammed
- * @param <T>
+ * @param <E>
+ * @param <S>
  */
 public class SuperCRUDController<E extends StampedNamedEntity, S extends SuperCRUDService<E>> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	protected E item;
+    private static final long serialVersionUID = 1L;
+
+    protected E item;
     protected List<E> items;
 
     @Inject
@@ -35,7 +36,7 @@ public class SuperCRUDController<E extends StampedNamedEntity, S extends SuperCR
     protected SecurityService ss;
 
     public void prepareList() {
-    	item = null;
+        item = null;
         items = service.find();
     }
 
@@ -58,18 +59,16 @@ public class SuperCRUDController<E extends StampedNamedEntity, S extends SuperCR
         prepareCreate();
     }
 
-    public String update() {
+    public void update() {
         service.update(item);
         addFacesMessage(FacesMessage.SEVERITY_INFO, "updated");
         item = null;
-        return "list?faces-redirect=true";
     }
 
-    public String remove() {
+    public void remove() {
         service.remove(item);
         addFacesMessage(FacesMessage.SEVERITY_INFO, "removed");
         item = null;
-        return "list?faces-redirect=true";
     }
 
     public E getItem() {
